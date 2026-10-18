@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1E5B3A">
+<title>Farm Log</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
+<style>
+:root{--bg:#F6F8F3;--ink:#14231A;--muted:#5B6A60;--line:#D3DBCF;--yolk:#F0AE1B;--green:#1E5B3A;--red:#B3261E}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main,header,nav{max-width:480px;margin:0 auto;padding:16px}
+header{display:flex;justify-content:space-between;align-items:center;padding-bottom:0}
+h1{font-size:30px;margin:24px 0 16px}
+h2{font-size:20px;margin:0 0 4px}
+label{display:block;margin:0 0 16px;color:var(--muted);font-size:16px}
+input,select{display:block;width:100%;min-height:54px;margin-top:6px;padding:8px 12px;font:inherit;font-size:22px;color:var(--ink);background:#fff;border:2px solid var(--line);border-radius:8px}
+input:focus,select:focus,button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+button{font:inherit;cursor:pointer}
+.primary{width:100%;min-height:56px;font-weight:700;color:var(--ink);background:var(--yolk);border:0;border-radius:8px}
+.link{background:none;border:0;color:var(--green);padding:8px;font-size:16px;text-decoration:underline}
+nav{display:flex;gap:8px}
+nav button{flex:1;min-height:48px;font-size:15px;padding:0 4px;background:#fff;border:2px solid var(--line);border-radius:8px;font-weight:600}
+nav button.on{background:var(--green);border-color:var(--green);color:#fff}
+.err{color:var(--red);font-weight:600}.ok{color:var(--green);font-weight:600}
+section{background:#fff;border:2px solid var(--line);border-radius:8px;padding:16px;margin-bottom:16px}
+.big{font-size:56px;font-weight:800;line-height:1.1}.big small{font-size:18px;font-weight:600;color:var(--muted);margin-left:6px}
+.bar{height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:8px 0 12px}.bar i{display:block;height:100%;background:var(--green)}
+.row{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:4px 0}
+table{width:100%;border-collapse:collapse;font-size:16px}
+th{text-align:left;color:var(--muted);font-weight:600}th,td{padding:6px 4px;border-bottom:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+// ====== PASTE YOUR VALUES (Supabase > Project Settings > API) ======
+const SUPABASE_URL = 'https://vuesrzzaizuuypqiqsgh.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_ulubCPXy-yxQ8C8TqgZxRA_Txf8Tpwc'; // never the secret / service_role key
+// ===================================================================
+
+const T = {
+  en:{log:'Daily log',dash:'Results',pen:'Pen',date:'Date',eggs:'Eggs collected',feed:'Feed used (kg)',expenses:'Expenses (₦)',med:'Medication',trans:'Logistics / transport',exp7:'Expenses, last 7 days',dead:'Deaths',save:'Save entry',saved:'Saved.',hd:'hen-day',drop:'Production dropped by',pts:'points',nodata:'No entries yet.',nopens:'No pens set up yet.',signin:'Sign in',signout:'Sign out',email:'Email',pw:'Password',noFarm:'This account is not linked to a farm yet.',farm:'Farm',setup:'Set up your farm',fname:'Farm name',bag:'Feed bag size (kg)',price:'Feed price per bag (₦)',pname:'Pen name',birds:'Number of birds',addpen:'Add pen',close:'Close',create:'Create farm',update:'Update',pens:'Pens',confirmClose:'Close this pen? Its past entries are kept.',duties:'Duties',dnew:'New duty',dname:'Duty (e.g. Feed pens)',assignee:'Assigned to',dtime:'Due time',adddty:'Add duty',markdone:'Mark done',done:'Done',by:'by',overdue:'Overdue',undo:'Undo',remove:'Remove',nodut:'No duties yet.',of:'of'},
+  ha:{log:'Rubuta na yau',dash:'Sakamako',pen:'Kwano',date:'Kwanan wata',eggs:'Kwai da aka tara',feed:'Abincin da aka yi amfani da (kg)',expenses:'Kashe-kashe (₦)',med:'Magani',trans:'Sufuri',exp7:'Kashe-kashe, kwanaki 7',dead:'Mutuwa',save:'Adana',saved:'An adana.',hd:'hen-day',drop:'Samar kwai ta ragu da',pts:'maki',nodata:'Babu bayani tukuna.',nopens:'Babu kwano tukuna.',signin:'Shiga',signout:'Fita',email:'Imel',pw:'Kalmar sirri',noFarm:'Ba a haɗa wannan asusu da gona ba tukuna.',farm:'Gona',setup:'Saita gonarka',fname:'Sunan gona',bag:'Nauyin buhun abinci (kg)',price:'Farashin buhu (₦)',pname:'Sunan kwano',birds:'Adadin kaji',addpen:'Ƙara kwano',close:'Rufe',create:'Ƙirƙiri gona',update:'Sabunta',pens:'Kwanuka',confirmClose:'Rufe wannan kwano? Bayanan baya za su kasance.',duties:'Ayyuka',dnew:'Sabon aiki',dname:'Aiki (misali: Ciyar da kaji)',assignee:'Wanda aka ba',dtime:'Lokaci',adddty:'Ƙara aiki',markdone:'An gama',done:'An yi',by:'daga',overdue:'Ya wuce lokaci',undo:'Soke',remove:'Cire',nodut:'Babu ayyuka tukuna.',of:'cikin'}
+};
+let lang = 'en', farm = null, pens = [], tab = 'log', role = 'worker';
+try { lang = localStorage.getItem('lang') || 'en'; } catch (e) {}
+const $ = s => document.querySelector(s);
+const t = k => T[lang][k] || k;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const today = () => new Date().toLocaleDateString('en-CA', { timeZone: 'Africa/Lagos' });
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const langBtn = () => lang === 'en' ? 'Hausa' : 'English';
+function flipLang() { lang = lang === 'en' ? 'ha' : 'en'; try { localStorage.setItem('lang', lang); } catch (e) {} }
+
+async function init() {
+  const { data: { session } } = await sb.auth.getSession();
+  session ? load() : renderLogin();
+}
+
+async function load() {
+  const { data, error } = await sb.from('app_users').select('role, farms(id, name, bag_kg, feed_price_per_bag)').maybeSingle();
+  if (error) { renderLogin(error.message); return; }
+  if (!data) { renderSetup(); return; }
+  farm = data.farms; role = data.role;
+  await loadPens();
+  tab = 'log';
+  renderApp();
+}
+
+async function loadPens() {
+  const r = await sb.from('flocks').select('id, pen_name').eq('status', 'active').order('pen_name');
+  pens = r.data || [];
+}
+
+function renderSetup() {
+  $('#app').innerHTML = `<main><h1>${t('setup')}</h1><form id="sf">
+    <label>${t('fname')}<input id="sn" required></label>
+    <label>${t('bag')}<input type="number" id="sb" inputmode="decimal" min="1" step="0.5" value="25" required></label>
+    <label>${t('price')}<input type="number" id="sp" inputmode="decimal" min="0"></label>
+    <label>${t('pname')}<input id="pn" value="Pen A" required></label>
+    <label>${t('birds')}<input type="number" id="pb" inputmode="numeric" min="1" required></label>
+    <p class="err" id="er"></p><button class="primary">${t('create')}</button></form>
+    <button class="link" id="so">${t('signout')}</button></main>`;
+  $('#so').onclick = async () => { await sb.auth.signOut(); renderLogin(); };
+  $('#sf').onsubmit = async e => {
+    e.preventDefault();
+    const { data: id, error } = await sb.rpc('create_farm', {
+      p_name: $('#sn').value.trim(), p_bag_kg: +$('#sb').value,
+      p_feed_price: $('#sp').value === '' ? null : +$('#sp').value });
+    if (error) { $('#er').textContent = error.message; return; }
+    const r = await sb.from('flocks').insert({ farm_id: id, pen_name: $('#pn').value.trim(), starting_birds: +$('#pb').value, date_placed: today() });
+    if (r.error) { $('#er').textContent = r.error.message; return; }
+    load();
+  };
+}
+
+function renderLogin(msg) {
+  $('#app').innerHTML = `<main><h1>Farm Log</h1>
+    <form id="lf"><label>${t('email')}<input type="email" id="em" required autocomplete="username"></label>
+    <label>${t('pw')}<input type="password" id="pw" required autocomplete="current-password"></label>
+    <p class="err" id="er">${msg ? esc(msg) : ''}</p><button class="primary">${t('signin')}</button></form>
+    <button class="link" id="lg">${langBtn()}</button></main>`;
+  $('#lf').onsubmit = async e => {
+    e.preventDefault();
+    const { error } = await sb.auth.signInWithPassword({ email: $('#em').value.trim(), password: $('#pw').value });
+    error ? $('#er').textContent = error.message : load();
+  };
+  $('#lg').onclick = () => { flipLang(); renderLogin(); };
+}
+
+function renderApp() {
+  $('#app').innerHTML = `<header><b>${esc(farm.name)}</b><span><button class="link" id="lg">${langBtn()}</button><button class="link" id="so">${t('signout')}</button></span></header>
+    <nav><button id="tl" class="${tab === 'log' ? 'on' : ''}">${t('log')}</button><button id="td" class="${tab === 'dash' ? 'on' : ''}">${t('dash')}</button><button id="tu" class="${tab === 'duty' ? 'on' : ''}">${t('duties')}</button>${role === 'owner' ? `<button id="tf" class="${tab === 'farm' ? 'on' : ''}">${t('farm')}</button>` : ''}</nav><main id="v"></main>`;
+  $('#lg').onclick = () => { flipLang(); renderApp(); };
+  $('#so').onclick = async () => { await sb.auth.signOut(); renderLogin(); };
+  $('#tl').onclick = () => { tab = 'log'; renderApp(); };
+  $('#td').onclick = () => { tab = 'dash'; renderApp(); };
+  if ($('#tf')) $('#tf').onclick = () => { tab = 'farm'; renderApp(); };
+  $('#tu').onclick = () => { tab = 'duty'; renderApp(); };
+  tab === 'log' ? viewLog() : tab === 'dash' ? viewDash() : tab === 'duty' ? viewDuties() : viewFarm();
+}
+
+function viewLog() {
+  if (!pens.length) { $('#v').innerHTML = `<p>${t('nopens')}</p>`; return; }
+  $('#v').innerHTML = `<form id="f">
+    <label>${t('pen')}<select id="pen">${pens.map(p => `<option value="${p.id}">${esc(p.pen_name)}</option>`).join('')}</select></label>
+    <label>${t('date')}<input type="date" id="dt" value="${today()}" required></label>
+    <label>${t('eggs')}<input type="number" id="eg" inputmode="numeric" min="0" required></label>
+    <label>${t('feed')}<input type="number" id="fd" inputmode="decimal" min="0" step="0.1" required></label>
+    <label>${t('dead')}<input type="number" id="dd" inputmode="numeric" min="0" value="0" required></label>
+    <h2 style="margin:24px 0 8px">${t('expenses')}</h2>
+    <label>${t('med')}<input type="number" id="xm" inputmode="numeric" min="0"></label>
+    <label>${t('trans')}<input type="number" id="xt" inputmode="numeric" min="0"></label>
+    <p id="msg" role="status"></p><button class="primary">${t('save')}</button></form>`;
+  $('#f').onsubmit = async e => {
+    e.preventDefault();
+    const { data: { user } } = await sb.auth.getUser();
+    const { error } = await sb.from('daily_logs').upsert({
+      flock_id: $('#pen').value, log_date: $('#dt').value,
+      eggs_good: +$('#eg').value, feed_kg: +$('#fd').value,
+      deaths: +$('#dd').value, entered_by: user.email
+    }, { onConflict: 'flock_id,log_date' });
+    let err = error;
+    if (!err) {
+      const rows = [['drugs', $('#xm').value], ['transport', $('#xt').value]].filter(r => r[1] !== '')
+        .map(r => ({ flock_id: $('#pen').value, cost_date: $('#dt').value, type: r[0], amount: +r[1] }));
+      if (rows.length) err = (await sb.from('costs').upsert(rows, { onConflict: 'flock_id,cost_date,type' })).error;
+    }
+    $('#msg').className = err ? 'err' : 'ok';
+    $('#msg').textContent = err ? err.message : t('saved');
+    if (!err) { $('#eg').value = ''; $('#fd').value = ''; $('#dd').value = 0; $('#xm').value = ''; $('#xt').value = ''; }
+  };
+}
+
+async function viewDash() {
+  $('#v').innerHTML = '<p>…</p>';
+  let h = '';
+  const from7 = new Date(Date.now() - 6 * 864e5).toLocaleDateString('en-CA', { timeZone: 'Africa/Lagos' });
+  const fmt = n => '₦' + n.toLocaleString('en-NG');
+  for (const p of pens) {
+    const { data } = await sb.from('flock_daily').select('*').eq('flock_id', p.id)
+      .order('log_date', { ascending: false }).limit(7);
+    const cs = (await sb.from('costs').select('type, amount').eq('flock_id', p.id).gte('cost_date', from7)).data || [];
+    const sum = ty => cs.filter(c => c.type === ty).reduce((a, c) => a + Number(c.amount), 0);
+    h += `<section><h2>${esc(p.pen_name)}</h2>`;
+    if (!data || !data.length) { h += `<p>${t('nodata')}</p></section>`; continue; }
+    const a = data[0], b = data[1];
+    const d = b ? Math.round((a.hen_day_pct - b.hen_day_pct) * 10) / 10 : null;
+    h += `<div class="big">${a.hen_day_pct}<small>% ${t('hd')}</small></div>
+      <div class="bar"><i style="width:${Math.min(100, a.hen_day_pct)}%"></i></div>`;
+    if (d !== null && d <= -5) h += `<p class="err">${t('drop')} ${Math.abs(d)} ${t('pts')}</p>`;
+    h += `<table><tr><th>${t('date')}</th><th>${t('eggs')}</th><th>%</th><th>${t('dead')}</th><th>₦/crate</th></tr>` +
+      data.map(r => `<tr><td>${r.log_date.slice(5)}</td><td>${r.eggs_good + r.eggs_cracked}</td><td>${r.hen_day_pct}</td><td>${r.deaths}</td><td>${r.feed_cost_per_crate ?? '–'}</td></tr>`).join('') +
+      `</table>` + (sum('drugs') + sum('transport') > 0 ? `<p style="color:var(--muted);font-size:16px;margin:10px 0 0">${t('exp7')}: ${t('med')} ${fmt(sum('drugs'))} · ${t('trans')} ${fmt(sum('transport'))}</p>` : '') + `</section>`;
+  }
+  $('#v').innerHTML = h || `<p>${t('nopens')}</p>`;
+}
+
+async function viewDuties() {
+  $('#v').innerHTML = '<p>…</p>';
+  const [d, c] = await Promise.all([
+    sb.from('duties').select('id, name, assignee, due_time').eq('active', true).order('due_time', { ascending: true, nullsFirst: false }),
+    sb.from('duty_checks').select('duty_id, done_at, done_by').eq('check_date', today())
+  ]);
+  if (d.error) { $('#v').innerHTML = `<p class="err">${esc(d.error.message)}</p>`; return; }
+  const duties = d.data || [], checks = {};
+  (c.data || []).forEach(x => checks[x.duty_id] = x);
+  const hm = x => new Date(x).toLocaleTimeString('en-GB', { timeZone: 'Africa/Lagos', hour: '2-digit', minute: '2-digit' });
+  const nowHm = hm(Date.now());
+  const doneCount = duties.filter(x => checks[x.id]).length;
+  let h = duties.length ? `<h2>${doneCount} ${t('of')} ${duties.length} ${t('done').toLowerCase()}</h2>` : `<p>${t('nodut')}</p>`;
+  h += duties.map(x => {
+    const k = checks[x.id];
+    const late = !k && x.due_time && nowHm > x.due_time.slice(0, 5);
+    return `<section><b>${esc(x.name)}</b><div style="color:var(--muted);font-size:16px">${x.assignee ? esc(x.assignee) : ''}${x.due_time ? ' · ' + x.due_time.slice(0, 5) : ''}</div>` +
+      (k ? `<p class="ok">✓ ${t('done')} ${hm(k.done_at)} ${t('by')} ${esc(k.done_by || '')}</p>${role === 'owner' ? `<button class="link" data-undo="${x.id}">${t('undo')}</button>` : ''}`
+         : `${late ? `<p class="err">${t('overdue')}</p>` : ''}<button class="primary" data-done="${x.id}">${t('markdone')}</button>`) +
+      (role === 'owner' ? `<button class="link" data-rm="${x.id}">${t('remove')}</button>` : '') + `</section>`;
+  }).join('');
+  if (role === 'owner') h += `<form id="df" style="margin-top:20px"><h2>${t('dnew')}</h2>
+    <label>${t('dname')}<input id="dn" required></label>
+    <label>${t('assignee')}<input id="da"></label>
+    <label>${t('dtime')}<input type="time" id="dt2"></label>
+    <p id="dm" class="err"></p><button class="primary">${t('adddty')}</button></form>`;
+  $('#v').innerHTML = h;
+  document.querySelectorAll('[data-done]').forEach(b => b.onclick = async () => {
+    b.disabled = true;
+    const { data: { user } } = await sb.auth.getUser();
+    await sb.from('duty_checks').insert({ duty_id: b.dataset.done, check_date: today(), done_by: user.email });
+    viewDuties();
+  });
+  document.querySelectorAll('[data-undo]').forEach(b => b.onclick = async () => {
+    await sb.from('duty_checks').delete().eq('duty_id', b.dataset.undo).eq('check_date', today());
+    viewDuties();
+  });
+  document.querySelectorAll('[data-rm]').forEach(b => b.onclick = async () => {
+    if (!confirm(t('remove') + '?')) return;
+    await sb.from('duties').update({ active: false }).eq('id', b.dataset.rm);
+    viewDuties();
+  });
+  if ($('#df')) $('#df').onsubmit = async e => {
+    e.preventDefault();
+    const { error } = await sb.from('duties').insert({ farm_id: farm.id, name: $('#dn').value.trim(), assignee: $('#da').value.trim() || null, due_time: $('#dt2').value || null });
+    if (error) { $('#dm').textContent = error.message; return; }
+    viewDuties();
+  };
+}
+
+function viewFarm() {
+  $('#v').innerHTML = `<form id="ff"><h2>${t('farm')}</h2>
+    <label>${t('bag')}<input type="number" id="bg" inputmode="decimal" min="1" step="0.5" value="${farm.bag_kg}" required></label>
+    <label>${t('price')}<input type="number" id="pr" inputmode="decimal" min="0" value="${farm.feed_price_per_bag ?? ''}"></label>
+    <p id="fm" role="status"></p><button class="primary">${t('update')}</button></form>
+    <h2 style="margin-top:28px">${t('pens')}</h2>
+    ${pens.map(p => `<div class="row"><span>${esc(p.pen_name)}</span><button class="link" data-id="${p.id}">${t('close')}</button></div>`).join('')}
+    <form id="pf" style="margin-top:16px"><label>${t('pname')}<input id="pn" required></label>
+    <label>${t('birds')}<input type="number" id="pb" inputmode="numeric" min="1" required></label>
+    <p id="pm" role="status"></p><button class="primary">${t('addpen')}</button></form>`;
+  $('#ff').onsubmit = async e => {
+    e.preventDefault();
+    const price = $('#pr').value === '' ? null : +$('#pr').value;
+    const { error } = await sb.from('farms').update({ bag_kg: +$('#bg').value, feed_price_per_bag: price }).eq('id', farm.id);
+    $('#fm').className = error ? 'err' : 'ok';
+    $('#fm').textContent = error ? error.message : t('saved');
+    if (!error) { farm.bag_kg = +$('#bg').value; farm.feed_price_per_bag = price; }
+  };
+  $('#pf').onsubmit = async e => {
+    e.preventDefault();
+    const { error } = await sb.from('flocks').insert({ farm_id: farm.id, pen_name: $('#pn').value.trim(), starting_birds: +$('#pb').value, date_placed: today() });
+    if (error) { $('#pm').className = 'err'; $('#pm').textContent = error.message; return; }
+    await loadPens(); viewFarm();
+  };
+  document.querySelectorAll('[data-id]').forEach(b => b.onclick = async () => {
+    if (!confirm(t('confirmClose'))) return;
+    const { error } = await sb.from('flocks').update({ status: 'closed' }).eq('id', b.dataset.id);
+    if (!error) { await loadPens(); viewFarm(); }
+  });
+}
+
+init();
+</script>
+</body>
+</html>

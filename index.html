@@ -41,8 +41,8 @@ const SUPABASE_ANON_KEY = 'sb_publishable_ulubCPXy-yxQ8C8TqgZxRA_Txf8Tpwc'; // n
 // ===================================================================
 
 const T = {
-  en:{log:'Daily log',dash:'Results',pen:'Pen',date:'Date',eggs:'Eggs collected',feed:'Feed used (kg)',expenses:'Expenses (₦)',med:'Medication',trans:'Logistics / transport',exp7:'Expenses, last 7 days',dead:'Deaths',save:'Save entry',saved:'Saved.',hd:'hen-day',drop:'Production dropped by',pts:'points',nodata:'No entries yet.',nopens:'No pens set up yet.',signin:'Sign in',signout:'Sign out',email:'Email',pw:'Password',noFarm:'This account is not linked to a farm yet.',farm:'Farm',setup:'Set up your farm',fname:'Farm name',bag:'Feed bag size (kg)',price:'Feed price per bag (₦)',pname:'Pen name',birds:'Number of birds',addpen:'Add pen',close:'Close',create:'Create farm',update:'Update',pens:'Pens',confirmClose:'Close this pen? Its past entries are kept.',duties:'Duties',dnew:'New duty',dname:'Duty (e.g. Feed pens)',assignee:'Assigned to',dtime:'Due time',adddty:'Add duty',markdone:'Mark done',done:'Done',by:'by',overdue:'Overdue',undo:'Undo',remove:'Remove',nodut:'No duties yet.',of:'of'},
-  ha:{log:'Rubuta na yau',dash:'Sakamako',pen:'Kwano',date:'Kwanan wata',eggs:'Kwai da aka tara',feed:'Abincin da aka yi amfani da (kg)',expenses:'Kashe-kashe (₦)',med:'Magani',trans:'Sufuri',exp7:'Kashe-kashe, kwanaki 7',dead:'Mutuwa',save:'Adana',saved:'An adana.',hd:'hen-day',drop:'Samar kwai ta ragu da',pts:'maki',nodata:'Babu bayani tukuna.',nopens:'Babu kwano tukuna.',signin:'Shiga',signout:'Fita',email:'Imel',pw:'Kalmar sirri',noFarm:'Ba a haɗa wannan asusu da gona ba tukuna.',farm:'Gona',setup:'Saita gonarka',fname:'Sunan gona',bag:'Nauyin buhun abinci (kg)',price:'Farashin buhu (₦)',pname:'Sunan kwano',birds:'Adadin kaji',addpen:'Ƙara kwano',close:'Rufe',create:'Ƙirƙiri gona',update:'Sabunta',pens:'Kwanuka',confirmClose:'Rufe wannan kwano? Bayanan baya za su kasance.',duties:'Ayyuka',dnew:'Sabon aiki',dname:'Aiki (misali: Ciyar da kaji)',assignee:'Wanda aka ba',dtime:'Lokaci',adddty:'Ƙara aiki',markdone:'An gama',done:'An yi',by:'daga',overdue:'Ya wuce lokaci',undo:'Soke',remove:'Cire',nodut:'Babu ayyuka tukuna.',of:'cikin'}
+  en:{log:'Daily log',dash:'Results',pen:'Pen',date:'Date',eggs:'Eggs collected',feed:'Feed used (kg)',expenses:'Expenses (₦)',med:'Medication',trans:'Logistics / transport',exp7:'Expenses, last 7 days',dead:'Deaths',save:'Save entry',saved:'Saved.',hd:'hen-day',drop:'Production dropped by',pts:'points',nodata:'No entries yet.',nopens:'No pens set up yet.',signin:'Sign in',signout:'Sign out',email:'Email',pw:'Password',noFarm:'This account is not linked to a farm yet.',farm:'Farm',setup:'Set up your farm',fname:'Farm name',bag:'Feed bag size (kg)',price:'Feed price per bag (₦)',pname:'Pen name',birds:'Number of birds',addpen:'Add pen',close:'Close',create:'Create farm',update:'Update',pens:'Pens',confirmClose:'Close this pen? Its past entries are kept.',duties:'Duties',dnew:'New duty',dname:'Duty (e.g. Feed pens)',assignee:'Assigned to',dtime:'Due time',adddty:'Add duty',markdone:'Mark done',done:'Done',by:'by',overdue:'Overdue',undo:'Undo',remove:'Remove',nodut:'No duties yet.',of:'of',sales:'Sales',stype:'Item',t_eggs:'Eggs (crates)',t_hens:'Spent hens',t_manure:'Manure',t_other:'Other',qty:'Quantity',uprice:'Price each (₦)',buyer:'Buyer (optional)',addsale:'Save sale',total:'Total',recent:'Recent sales',sum7:'Last 7 days',sold:'Sales',spent:'Costs',net:'Net (estimate)',netnote:'Costs = feed + labour + medication + transport.',labour:'Monthly labour cost (₦)',nolabour:' Labour is not set (Farm tab).',nofeed:' Feed price is not set (Farm tab).',nosales:'No sales yet.'},
+  ha:{log:'Rubuta na yau',dash:'Sakamako',pen:'Kwano',date:'Kwanan wata',eggs:'Kwai da aka tara',feed:'Abincin da aka yi amfani da (kg)',expenses:'Kashe-kashe (₦)',med:'Magani',trans:'Sufuri',exp7:'Kashe-kashe, kwanaki 7',dead:'Mutuwa',save:'Adana',saved:'An adana.',hd:'hen-day',drop:'Samar kwai ta ragu da',pts:'maki',nodata:'Babu bayani tukuna.',nopens:'Babu kwano tukuna.',signin:'Shiga',signout:'Fita',email:'Imel',pw:'Kalmar sirri',noFarm:'Ba a haɗa wannan asusu da gona ba tukuna.',farm:'Gona',setup:'Saita gonarka',fname:'Sunan gona',bag:'Nauyin buhun abinci (kg)',price:'Farashin buhu (₦)',pname:'Sunan kwano',birds:'Adadin kaji',addpen:'Ƙara kwano',close:'Rufe',create:'Ƙirƙiri gona',update:'Sabunta',pens:'Kwanuka',confirmClose:'Rufe wannan kwano? Bayanan baya za su kasance.',duties:'Ayyuka',dnew:'Sabon aiki',dname:'Aiki (misali: Ciyar da kaji)',assignee:'Wanda aka ba',dtime:'Lokaci',adddty:'Ƙara aiki',markdone:'An gama',done:'An yi',by:'daga',overdue:'Ya wuce lokaci',undo:'Soke',remove:'Cire',nodut:'Babu ayyuka tukuna.',of:'cikin',sales:'Tallace-tallace',stype:'Abu',t_eggs:'Kwai (crate)',t_hens:'Tsofaffin kaji',t_manure:'Taki',t_other:'Wani',qty:'Adadi',uprice:'Farashin ɗaya (₦)',buyer:'Mai saye (na zaɓi)',addsale:'Adana tallace',total:'Jimla',recent:'Tallace-tallace na kwanan nan',sum7:'Kwanaki 7 da suka wuce',sold:'Tallace',spent:'Kashe-kashe',net:'Riba (kimantawa)',netnote:'Kashe-kashe = abinci + albashi + magani + sufuri.',labour:'Albashin ma’aikata na wata (₦)',nolabour:' Ba a saka albashi ba (shafin Gona).',nofeed:' Ba a saka farashin abinci ba (shafin Gona).',nosales:'Babu tallace-tallace tukuna.'}
 };
 const SHOW_DUTIES = false; // set to true to show the staff duty checklist tab
 let lang = 'en', farm = null, pens = [], tab = 'log', role = 'worker';
@@ -61,7 +61,7 @@ async function init() {
 }
 
 async function load() {
-  const { data, error } = await sb.from('app_users').select('role, farms(id, name, bag_kg, feed_price_per_bag)').maybeSingle();
+  const { data, error } = await sb.from('app_users').select('role, farms(id, name, bag_kg, feed_price_per_bag, monthly_labour)').maybeSingle();
   if (error) { renderLogin(error.message); return; }
   if (!data) { renderSetup(); return; }
   farm = data.farms; role = data.role;
@@ -113,14 +113,15 @@ function renderLogin(msg) {
 
 function renderApp() {
   $('#app').innerHTML = `<header><b>${esc(farm.name)}</b><span><button class="link" id="lg">${langBtn()}</button><button class="link" id="so">${t('signout')}</button></span></header>
-    <nav><button id="tl" class="${tab === 'log' ? 'on' : ''}">${t('log')}</button><button id="td" class="${tab === 'dash' ? 'on' : ''}">${t('dash')}</button>${SHOW_DUTIES ? `<button id="tu" class="${tab === 'duty' ? 'on' : ''}">${t('duties')}</button>` : ''}${role === 'owner' ? `<button id="tf" class="${tab === 'farm' ? 'on' : ''}">${t('farm')}</button>` : ''}</nav><main id="v"></main>`;
+    <nav><button id="tl" class="${tab === 'log' ? 'on' : ''}">${t('log')}</button><button id="td" class="${tab === 'dash' ? 'on' : ''}">${t('dash')}</button><button id="ts" class="${tab === 'sales' ? 'on' : ''}">${t('sales')}</button>${SHOW_DUTIES ? `<button id="tu" class="${tab === 'duty' ? 'on' : ''}">${t('duties')}</button>` : ''}${role === 'owner' ? `<button id="tf" class="${tab === 'farm' ? 'on' : ''}">${t('farm')}</button>` : ''}</nav><main id="v"></main>`;
   $('#lg').onclick = () => { flipLang(); renderApp(); };
   $('#so').onclick = async () => { await sb.auth.signOut(); renderLogin(); };
   $('#tl').onclick = () => { tab = 'log'; renderApp(); };
   $('#td').onclick = () => { tab = 'dash'; renderApp(); };
   if ($('#tf')) $('#tf').onclick = () => { tab = 'farm'; renderApp(); };
+  $('#ts').onclick = () => { tab = 'sales'; renderApp(); };
   if ($('#tu')) $('#tu').onclick = () => { tab = 'duty'; renderApp(); };
-  tab === 'log' ? viewLog() : tab === 'dash' ? viewDash() : tab === 'duty' ? viewDuties() : viewFarm();
+  tab === 'log' ? viewLog() : tab === 'dash' ? viewDash() : tab === 'sales' ? viewSales() : tab === 'duty' ? viewDuties() : viewFarm();
 }
 
 function viewLog() {
@@ -160,6 +161,22 @@ async function viewDash() {
   let h = '';
   const from7 = new Date(Date.now() - 6 * 864e5).toLocaleDateString('en-CA', { timeZone: 'Africa/Lagos' });
   const fmt = n => '₦' + n.toLocaleString('en-NG');
+  const [sl, cs0, lg] = await Promise.all([
+    sb.from('sales').select('quantity, unit_price').gte('sale_date', from7),
+    sb.from('costs').select('amount').gte('cost_date', from7),
+    sb.from('daily_logs').select('feed_kg').gte('log_date', from7)
+  ]);
+  const sold = (sl.data || []).reduce((a, x) => a + Number(x.quantity) * Number(x.unit_price), 0);
+  const price = Number(farm.feed_price_per_bag) || 0;
+  const feedCost = price ? (lg.data || []).reduce((a, x) => a + Number(x.feed_kg), 0) / Number(farm.bag_kg) * price : 0;
+  const labourCost = (Number(farm.monthly_labour) || 0) * 7 / 30;
+  const spent = (cs0.data || []).reduce((a, x) => a + Number(x.amount), 0) + feedCost + labourCost;
+  const netv = Math.round(sold - spent);
+  h += `<section><h2>${t('sum7')}</h2>
+    <div class="row"><span>${t('sold')}</span><b>${fmt(Math.round(sold))}</b></div>
+    <div class="row"><span>${t('spent')}</span><b>${fmt(Math.round(spent))}</b></div>
+    <div class="row"><span>${t('net')}</span><b class="${netv < 0 ? 'err' : 'ok'}">${fmt(netv)}</b></div>
+    <p style="color:var(--muted);font-size:14px;margin:8px 0 0">${t('netnote')}${price ? '' : t('nofeed')}${Number(farm.monthly_labour) ? '' : t('nolabour')}</p></section>`;
   for (const p of pens) {
     const { data } = await sb.from('flock_daily').select('*').eq('flock_id', p.id)
       .order('log_date', { ascending: false }).limit(7);
@@ -177,6 +194,40 @@ async function viewDash() {
       `</table>` + (sum('drugs') + sum('transport') > 0 ? `<p style="color:var(--muted);font-size:16px;margin:10px 0 0">${t('exp7')}: ${t('med')} ${fmt(sum('drugs'))} · ${t('trans')} ${fmt(sum('transport'))}</p>` : '') + `</section>`;
   }
   $('#v').innerHTML = h || `<p>${t('nopens')}</p>`;
+}
+
+async function viewSales() {
+  $('#v').innerHTML = '<p>…</p>';
+  const r = await sb.from('sales').select('id, sale_date, type, quantity, unit_price, buyer')
+    .order('sale_date', { ascending: false }).order('created_at', { ascending: false }).limit(15);
+  if (r.error) { $('#v').innerHTML = `<p class="err">${esc(r.error.message)}</p>`; return; }
+  const list = r.data || [];
+  const money = n => '₦' + Math.round(n).toLocaleString('en-NG');
+  $('#v').innerHTML = `<form id="sf2">
+    <label>${t('date')}<input type="date" id="sd" value="${today()}" required></label>
+    <label>${t('stype')}<select id="st"><option value="eggs">${t('t_eggs')}</option><option value="hens">${t('t_hens')}</option><option value="manure">${t('t_manure')}</option><option value="other">${t('t_other')}</option></select></label>
+    <label>${t('qty')}<input type="number" id="sq" inputmode="decimal" min="0" step="any" required></label>
+    <label>${t('uprice')}<input type="number" id="su" inputmode="decimal" min="0" step="any" required></label>
+    <label>${t('buyer')}<input id="sbuy"></label>
+    <p id="stot" style="font-weight:700"></p><p id="smsg" role="status"></p><button class="primary">${t('addsale')}</button></form>
+    <h2 style="margin-top:28px">${t('recent')}</h2>` +
+    (list.length ? list.map(x => `<div class="row"><span>${x.sale_date.slice(5)} · ${t('t_' + x.type)} ${Number(x.quantity)} × ${money(Number(x.unit_price))}${x.buyer ? ' · ' + esc(x.buyer) : ''}</span><b>${money(x.quantity * x.unit_price)}</b>${role === 'owner' ? `<button class="link" data-del="${x.id}">✕</button>` : ''}</div>`).join('') : `<p>${t('nosales')}</p>`);
+  const upd = () => { const v = +$('#sq').value * +$('#su').value; $('#stot').textContent = v ? `${t('total')}: ${money(v)}` : ''; };
+  $('#sq').oninput = upd; $('#su').oninput = upd;
+  $('#sf2').onsubmit = async e => {
+    e.preventDefault();
+    const { data: { user } } = await sb.auth.getUser();
+    const { error } = await sb.from('sales').insert({ farm_id: farm.id, sale_date: $('#sd').value, type: $('#st').value,
+      quantity: +$('#sq').value, unit_price: +$('#su').value, buyer: $('#sbuy').value.trim() || null, created_by: user.email });
+    if (error) { $('#smsg').className = 'err'; $('#smsg').textContent = error.message; return; }
+    await viewSales();
+    $('#smsg').className = 'ok'; $('#smsg').textContent = t('saved');
+  };
+  document.querySelectorAll('[data-del]').forEach(b => b.onclick = async () => {
+    if (!confirm(t('remove') + '?')) return;
+    await sb.from('sales').delete().eq('id', b.dataset.del);
+    viewSales();
+  });
 }
 
 async function viewDuties() {
@@ -233,6 +284,7 @@ function viewFarm() {
   $('#v').innerHTML = `<form id="ff"><h2>${t('farm')}</h2>
     <label>${t('bag')}<input type="number" id="bg" inputmode="decimal" min="1" step="0.5" value="${farm.bag_kg}" required></label>
     <label>${t('price')}<input type="number" id="pr" inputmode="decimal" min="0" value="${farm.feed_price_per_bag ?? ''}"></label>
+    <label>${t('labour')}<input type="number" id="lb" inputmode="numeric" min="0" value="${farm.monthly_labour ?? ''}"></label>
     <p id="fm" role="status"></p><button class="primary">${t('update')}</button></form>
     <h2 style="margin-top:28px">${t('pens')}</h2>
     ${pens.map(p => `<div class="row"><span>${esc(p.pen_name)}</span><button class="link" data-id="${p.id}">${t('close')}</button></div>`).join('')}
@@ -242,10 +294,11 @@ function viewFarm() {
   $('#ff').onsubmit = async e => {
     e.preventDefault();
     const price = $('#pr').value === '' ? null : +$('#pr').value;
-    const { error } = await sb.from('farms').update({ bag_kg: +$('#bg').value, feed_price_per_bag: price }).eq('id', farm.id);
+    const lab = $('#lb').value === '' ? null : +$('#lb').value;
+    const { error } = await sb.from('farms').update({ bag_kg: +$('#bg').value, feed_price_per_bag: price, monthly_labour: lab }).eq('id', farm.id);
     $('#fm').className = error ? 'err' : 'ok';
     $('#fm').textContent = error ? error.message : t('saved');
-    if (!error) { farm.bag_kg = +$('#bg').value; farm.feed_price_per_bag = price; }
+    if (!error) { farm.bag_kg = +$('#bg').value; farm.feed_price_per_bag = price; farm.monthly_labour = lab; }
   };
   $('#pf').onsubmit = async e => {
     e.preventDefault();

@@ -44,6 +44,7 @@ const T = {
   en:{log:'Daily log',dash:'Results',pen:'Pen',date:'Date',eggs:'Eggs collected',feed:'Feed used (kg)',expenses:'Expenses (₦)',med:'Medication',trans:'Logistics / transport',exp7:'Expenses, last 7 days',dead:'Deaths',save:'Save entry',saved:'Saved.',hd:'hen-day',drop:'Production dropped by',pts:'points',nodata:'No entries yet.',nopens:'No pens set up yet.',signin:'Sign in',signout:'Sign out',email:'Email',pw:'Password',noFarm:'This account is not linked to a farm yet.',farm:'Farm',setup:'Set up your farm',fname:'Farm name',bag:'Feed bag size (kg)',price:'Feed price per bag (₦)',pname:'Pen name',birds:'Number of birds',addpen:'Add pen',close:'Close',create:'Create farm',update:'Update',pens:'Pens',confirmClose:'Close this pen? Its past entries are kept.',duties:'Duties',dnew:'New duty',dname:'Duty (e.g. Feed pens)',assignee:'Assigned to',dtime:'Due time',adddty:'Add duty',markdone:'Mark done',done:'Done',by:'by',overdue:'Overdue',undo:'Undo',remove:'Remove',nodut:'No duties yet.',of:'of'},
   ha:{log:'Rubuta na yau',dash:'Sakamako',pen:'Kwano',date:'Kwanan wata',eggs:'Kwai da aka tara',feed:'Abincin da aka yi amfani da (kg)',expenses:'Kashe-kashe (₦)',med:'Magani',trans:'Sufuri',exp7:'Kashe-kashe, kwanaki 7',dead:'Mutuwa',save:'Adana',saved:'An adana.',hd:'hen-day',drop:'Samar kwai ta ragu da',pts:'maki',nodata:'Babu bayani tukuna.',nopens:'Babu kwano tukuna.',signin:'Shiga',signout:'Fita',email:'Imel',pw:'Kalmar sirri',noFarm:'Ba a haɗa wannan asusu da gona ba tukuna.',farm:'Gona',setup:'Saita gonarka',fname:'Sunan gona',bag:'Nauyin buhun abinci (kg)',price:'Farashin buhu (₦)',pname:'Sunan kwano',birds:'Adadin kaji',addpen:'Ƙara kwano',close:'Rufe',create:'Ƙirƙiri gona',update:'Sabunta',pens:'Kwanuka',confirmClose:'Rufe wannan kwano? Bayanan baya za su kasance.',duties:'Ayyuka',dnew:'Sabon aiki',dname:'Aiki (misali: Ciyar da kaji)',assignee:'Wanda aka ba',dtime:'Lokaci',adddty:'Ƙara aiki',markdone:'An gama',done:'An yi',by:'daga',overdue:'Ya wuce lokaci',undo:'Soke',remove:'Cire',nodut:'Babu ayyuka tukuna.',of:'cikin'}
 };
+const SHOW_DUTIES = false; // set to true to show the staff duty checklist tab
 let lang = 'en', farm = null, pens = [], tab = 'log', role = 'worker';
 try { lang = localStorage.getItem('lang') || 'en'; } catch (e) {}
 const $ = s => document.querySelector(s);
@@ -112,13 +113,13 @@ function renderLogin(msg) {
 
 function renderApp() {
   $('#app').innerHTML = `<header><b>${esc(farm.name)}</b><span><button class="link" id="lg">${langBtn()}</button><button class="link" id="so">${t('signout')}</button></span></header>
-    <nav><button id="tl" class="${tab === 'log' ? 'on' : ''}">${t('log')}</button><button id="td" class="${tab === 'dash' ? 'on' : ''}">${t('dash')}</button><button id="tu" class="${tab === 'duty' ? 'on' : ''}">${t('duties')}</button>${role === 'owner' ? `<button id="tf" class="${tab === 'farm' ? 'on' : ''}">${t('farm')}</button>` : ''}</nav><main id="v"></main>`;
+    <nav><button id="tl" class="${tab === 'log' ? 'on' : ''}">${t('log')}</button><button id="td" class="${tab === 'dash' ? 'on' : ''}">${t('dash')}</button>${SHOW_DUTIES ? `<button id="tu" class="${tab === 'duty' ? 'on' : ''}">${t('duties')}</button>` : ''}${role === 'owner' ? `<button id="tf" class="${tab === 'farm' ? 'on' : ''}">${t('farm')}</button>` : ''}</nav><main id="v"></main>`;
   $('#lg').onclick = () => { flipLang(); renderApp(); };
   $('#so').onclick = async () => { await sb.auth.signOut(); renderLogin(); };
   $('#tl').onclick = () => { tab = 'log'; renderApp(); };
   $('#td').onclick = () => { tab = 'dash'; renderApp(); };
   if ($('#tf')) $('#tf').onclick = () => { tab = 'farm'; renderApp(); };
-  $('#tu').onclick = () => { tab = 'duty'; renderApp(); };
+  if ($('#tu')) $('#tu').onclick = () => { tab = 'duty'; renderApp(); };
   tab === 'log' ? viewLog() : tab === 'dash' ? viewDash() : tab === 'duty' ? viewDuties() : viewFarm();
 }
 

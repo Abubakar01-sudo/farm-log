@@ -44,6 +44,7 @@ const T = {
   en:{log:'Daily log',dash:'Results',pen:'Pen',date:'Date',eggs:'Eggs collected',feed:'Feed used (kg)',expenses:'Expenses (₦)',med:'Medication',trans:'Logistics / transport',exp7:'Expenses, last 7 days',dead:'Deaths',save:'Save entry',saved:'Saved.',hd:'hen-day',drop:'Production dropped by',pts:'points',nodata:'No entries yet.',nopens:'No pens set up yet.',signin:'Sign in',signout:'Sign out',email:'Email',pw:'Password',noFarm:'This account is not linked to a farm yet.',farm:'Farm',setup:'Set up your farm',fname:'Farm name',bag:'Feed bag size (kg)',price:'Feed price per bag (₦)',pname:'Pen name',birds:'Number of birds',addpen:'Add pen',close:'Close',create:'Create farm',update:'Update',pens:'Pens',confirmClose:'Close this pen? Its past entries are kept.',duties:'Duties',dnew:'New duty',dname:'Duty (e.g. Feed pens)',assignee:'Assigned to',dtime:'Due time',adddty:'Add duty',markdone:'Mark done',done:'Done',by:'by',overdue:'Overdue',undo:'Undo',remove:'Remove',nodut:'No duties yet.',of:'of',sales:'Sales',stype:'Item',t_eggs:'Eggs (crates)',t_hens:'Spent hens',t_manure:'Manure',t_other:'Other',qty:'Quantity',uprice:'Price each (₦)',buyer:'Buyer (optional)',addsale:'Save sale',total:'Total',recent:'Recent sales',sum7:'Last 7 days',sold:'Sales',spent:'Costs',net:'Net (estimate)',netnote:'Costs = feed + labour + medication + transport.',labour:'Monthly labour cost (₦)',nolabour:' Labour is not set (Farm tab).',nofeed:' Feed price is not set (Farm tab).',nosales:'No sales yet.'},
   ha:{log:'Rubuta na yau',dash:'Sakamako',pen:'Kwano',date:'Kwanan wata',eggs:'Kwai da aka tara',feed:'Abincin da aka yi amfani da (kg)',expenses:'Kashe-kashe (₦)',med:'Magani',trans:'Sufuri',exp7:'Kashe-kashe, kwanaki 7',dead:'Mutuwa',save:'Adana',saved:'An adana.',hd:'hen-day',drop:'Samar kwai ta ragu da',pts:'maki',nodata:'Babu bayani tukuna.',nopens:'Babu kwano tukuna.',signin:'Shiga',signout:'Fita',email:'Imel',pw:'Kalmar sirri',noFarm:'Ba a haɗa wannan asusu da gona ba tukuna.',farm:'Gona',setup:'Saita gonarka',fname:'Sunan gona',bag:'Nauyin buhun abinci (kg)',price:'Farashin buhu (₦)',pname:'Sunan kwano',birds:'Adadin kaji',addpen:'Ƙara kwano',close:'Rufe',create:'Ƙirƙiri gona',update:'Sabunta',pens:'Kwanuka',confirmClose:'Rufe wannan kwano? Bayanan baya za su kasance.',duties:'Ayyuka',dnew:'Sabon aiki',dname:'Aiki (misali: Ciyar da kaji)',assignee:'Wanda aka ba',dtime:'Lokaci',adddty:'Ƙara aiki',markdone:'An gama',done:'An yi',by:'daga',overdue:'Ya wuce lokaci',undo:'Soke',remove:'Cire',nodut:'Babu ayyuka tukuna.',of:'cikin',sales:'Tallace-tallace',stype:'Abu',t_eggs:'Kwai (crate)',t_hens:'Tsofaffin kaji',t_manure:'Taki',t_other:'Wani',qty:'Adadi',uprice:'Farashin ɗaya (₦)',buyer:'Mai saye (na zaɓi)',addsale:'Adana tallace',total:'Jimla',recent:'Tallace-tallace na kwanan nan',sum7:'Kwanaki 7 da suka wuce',sold:'Tallace',spent:'Kashe-kashe',net:'Riba (kimantawa)',netnote:'Kashe-kashe = abinci + albashi + magani + sufuri.',labour:'Albashin ma’aikata na wata (₦)',nolabour:' Ba a saka albashi ba (shafin Gona).',nofeed:' Ba a saka farashin abinci ba (shafin Gona).',nosales:'Babu tallace-tallace tukuna.'}
 };
+const SHOW_SUMMARY = false; // set to true to show the 'Last 7 days' sales/costs/net card on Results
 const SHOW_DUTIES = false; // set to true to show the staff duty checklist tab
 let lang = 'en', farm = null, pens = [], tab = 'log', role = 'worker';
 try { lang = localStorage.getItem('lang') || 'en'; } catch (e) {}
@@ -161,6 +162,7 @@ async function viewDash() {
   let h = '';
   const from7 = new Date(Date.now() - 6 * 864e5).toLocaleDateString('en-CA', { timeZone: 'Africa/Lagos' });
   const fmt = n => '₦' + n.toLocaleString('en-NG');
+  if (SHOW_SUMMARY) {
   const [sl, cs0, lg] = await Promise.all([
     sb.from('sales').select('quantity, unit_price').gte('sale_date', from7),
     sb.from('costs').select('amount').gte('cost_date', from7),
@@ -177,6 +179,7 @@ async function viewDash() {
     <div class="row"><span>${t('spent')}</span><b>${fmt(Math.round(spent))}</b></div>
     <div class="row"><span>${t('net')}</span><b class="${netv < 0 ? 'err' : 'ok'}">${fmt(netv)}</b></div>
     <p style="color:var(--muted);font-size:14px;margin:8px 0 0">${t('netnote')}${price ? '' : t('nofeed')}${Number(farm.monthly_labour) ? '' : t('nolabour')}</p></section>`;
+  }
   for (const p of pens) {
     const { data } = await sb.from('flock_daily').select('*').eq('flock_id', p.id)
       .order('log_date', { ascending: false }).limit(7);

@@ -41,7 +41,7 @@ const SUPABASE_ANON_KEY = 'sb_publishable_ulubCPXy-yxQ8C8TqgZxRA_Txf8Tpwc'; // n
 // ===================================================================
 
 const T = {
-  en:{log:'Daily log',dash:'Production',pen:'Pen',date:'Date',eggs:'Eggs collected',feed:'Feed used (kg)',expenses:'Expenses (₦)',med:'Medication',trans:'Logistics / transport',exp7:'Expenses, last 7 days',dead:'Deaths',save:'Save entry',saved:'Saved.',hd:'hen-day',drop:'Production dropped by',pts:'points',nodata:'No entries yet.',nopens:'No pens set up yet.',signin:'Sign in',signout:'Sign out',email:'Email',pw:'Password',noFarm:'This account is not linked to a farm yet.',farm:'Farm',setup:'Set up your farm',fname:'Farm name',bag:'Feed bag size (kg)',price:'Feed price per bag (₦)',pname:'Pen name',birds:'Number of birds',addpen:'Add pen',close:'Close',create:'Create farm',update:'Update',pens:'Pens',confirmClose:'Close this pen? Its past entries are kept.',duties:'Duties',dnew:'New duty',dname:'Duty (e.g. Feed pens)',assignee:'Assigned to',dtime:'Due time',adddty:'Add duty',markdone:'Mark done',done:'Done',by:'by',overdue:'Overdue',undo:'Undo',remove:'Remove',nodut:'No duties yet.',of:'of',sales:'Sales',stype:'Item',t_eggs:'Eggs (crates)',t_hens:'Spent hens',t_manure:'Manure',t_other:'Other',qty:'Quantity',uprice:'Price each (₦)',buyer:'Buyer (optional)',addsale:'Save sale',total:'Total',recent:'Recent sales',sum7:'Last 7 days',sold:'Sales',spent:'Costs',net:'Net (estimate)',netnote:'Costs = feed + labour + medication + transport.',labour:'Monthly labour cost (₦)',nolabour:' Labour is not set (Farm tab).',nofeed:' Feed price is not set (Farm tab).',nosales:'No sales yet.',exptab:'Expenses',pay:'Payment method',p_cash:'Cash',p_transfer:'Bank transfer',p_other:'Other',recv:'Amount received (₦, blank = all)',owed:'Owed',markpaid:'Mark paid',category:'Category',desc:'Description',supplier:'Supplier',paid:'Amount paid (₦, blank = all)',amount:'Amount (₦)',owing:'You owe',owedtotal:'Customers owe you',addexp:'Save expense',noexp:'No expenses yet.',cat_feed:'Feed',cat_medication:'Medication / vaccination',cat_labour:'Labour / staff',cat_transport:'Transport / logistics',cat_utilities:'Electricity / water',cat_maintenance:'Equipment maintenance',cat_packaging:'Packaging',cat_admin:'Administrative',cat_other:'Other',recentexp:'Recent expenses',today:'Today',broken:'Broken eggs (part of the total above)',eused:'Eggs used or given away',brokenbig:'Broken eggs cannot be more than eggs collected.',openeggs:'Opening egg stock (crates)',crates:'crates',stockwarn:'You are selling more than the stock of',saveanyway:'Save anyway?',stock:'Egg stock',ostock:'Opening stock',produced:'Produced',brokenl:'Broken',usedl:'Used / given away',soldl:'Sold',cstock:'Closing stock',prodcost:'Production cost',cpc:'Cost per crate',avgp:'Average selling price per crate',mcrate:'Margin per crate',tmargin:'Total margin (crates sold)',prodcrates:'Crates produced',costnote:'Production cost = feed, labour, medication, transport and other costs, but not administrative costs.',moneytab:'Money',pl:'Profit and loss',revenue:'Egg and other sales',feedused:'Feed used',labourl:'Labour',opprofit:'Operating profit',hensl:'Spent hens sold (not operating income)',incl:'Result including spent hens',cf:'Cash flow',opening:'Opening cash balance (₦)',received:'Cash received',paidout:'Cash paid',closing:'Closing balance',from:'From',to:'To',d7:'7 days',d30:'30 days',mon:'This month',owedby:'Customers owe you (this period)',oweyou:'You owe suppliers (this period)',moneynote:'Profit counts feed by what the hens ate and uses the monthly labour amount if set. Cash flow counts money actually received and paid.'},
+  en:{log:'Daily log',dash:'Production',pen:'Pen',date:'Date',eggs:'Eggs collected',feed:'Feed used (kg)',expenses:'Expenses (₦)',med:'Medication',trans:'Logistics / transport',exp7:'Expenses, last 7 days',dead:'Deaths',save:'Save entry',saved:'Saved.',hd:'hen-day',drop:'Production dropped by',pts:'points',nodata:'No entries yet.',nopens:'No pens set up yet.',signin:'Sign in',signout:'Sign out',email:'Email',pw:'Password',noFarm:'This account is not linked to a farm yet.',farm:'Farm',setup:'Set up your farm',fname:'Farm name',bag:'Feed bag size (kg)',price:'Feed price per bag (₦)',pname:'Pen name',birds:'Number of birds',addpen:'Add pen',close:'Close',create:'Create farm',update:'Update',pens:'Pens',confirmClose:'Close this pen? Its past entries are kept.',duties:'Duties',dnew:'New duty',dname:'Duty (e.g. Feed pens)',assignee:'Assigned to',dtime:'Due time',adddty:'Add duty',markdone:'Mark done',done:'Done',by:'by',overdue:'Overdue',undo:'Undo',remove:'Remove',nodut:'No duties yet.',of:'of',sales:'Sales',stype:'Item',t_eggs:'Eggs (crates)',t_hens:'Spent hens',t_manure:'Manure',t_other:'Other',qty:'Quantity',uprice:'Price each (₦)',buyer:'Buyer (optional)',addsale:'Save sale',total:'Total',recent:'Recent sales',sum7:'Last 7 days',sold:'Sales',spent:'Costs',net:'Net (estimate)',netnote:'Costs = feed + labour + medication + transport.',labour:'Monthly labour cost (₦)',nolabour:' Labour is not set (Farm tab).',nofeed:' Feed price is not set (Farm tab).',nosales:'No sales yet.',exptab:'Expenses',pay:'Payment method',p_cash:'Cash',p_transfer:'Bank transfer',p_other:'Other',recv:'Amount received (₦, blank = all)',owed:'Owed',markpaid:'Mark paid',category:'Category',desc:'Description',supplier:'Supplier',paid:'Amount paid (₦, blank = all)',amount:'Amount (₦)',owing:'You owe',owedtotal:'Customers owe you',addexp:'Save expense',noexp:'No expenses yet.',cat_feed:'Feed',cat_medication:'Medication / vaccination',cat_labour:'Labour / staff',cat_transport:'Transport / logistics',cat_utilities:'Electricity / water',cat_maintenance:'Equipment maintenance',cat_packaging:'Packaging',cat_admin:'Administrative',cat_other:'Other',recentexp:'Recent expenses',belowp:'Below set price',pricefor:'Price for date',pricecrate:'Egg price per crate (₦)',setprice:'Set price',currentprice:'Current egg price',team:'Team',noteam:'No staff added yet.',newcode:'Create join code',codeis:'Share this code with your staff member:',joinfarm:'Join a farm',code:'Join code',confirmfirst:'Check your email to confirm your account, then sign in.',today:'Today',broken:'Broken eggs (part of the total above)',eused:'Eggs used or given away',brokenbig:'Broken eggs cannot be more than eggs collected.',openeggs:'Opening egg stock (crates)',crates:'crates',stockwarn:'You are selling more than the stock of',saveanyway:'Save anyway?',stock:'Egg stock',ostock:'Opening stock',produced:'Produced',brokenl:'Broken',usedl:'Used / given away',soldl:'Sold',cstock:'Closing stock',prodcost:'Production cost',cpc:'Cost per crate',avgp:'Average selling price per crate',mcrate:'Margin per crate',tmargin:'Total margin (crates sold)',prodcrates:'Crates produced',costnote:'Production cost = feed, labour, medication, transport and other costs, but not administrative costs.',moneytab:'Money',pl:'Profit and loss',revenue:'Egg and other sales',feedused:'Feed used',labourl:'Labour',opprofit:'Operating profit',hensl:'Spent hens sold (not operating income)',incl:'Result including spent hens',cf:'Cash flow',opening:'Opening cash balance (₦)',received:'Cash received',paidout:'Cash paid',closing:'Closing balance',from:'From',to:'To',d7:'7 days',d30:'30 days',mon:'This month',owedby:'Customers owe you (this period)',oweyou:'You owe suppliers (this period)',moneynote:'Profit counts feed by what the hens ate and uses the monthly labour amount if set. Cash flow counts money actually received and paid.'},
   ha:{log:'Rubuta na yau',dash:'Samarwa',pen:'Kwano',date:'Kwanan wata',eggs:'Kwai da aka tara',feed:'Abincin da aka yi amfani da (kg)',expenses:'Kashe-kashe (₦)',med:'Magani',trans:'Sufuri',exp7:'Kashe-kashe, kwanaki 7',dead:'Mutuwa',save:'Adana',saved:'An adana.',hd:'hen-day',drop:'Samar kwai ta ragu da',pts:'maki',nodata:'Babu bayani tukuna.',nopens:'Babu kwano tukuna.',signin:'Shiga',signout:'Fita',email:'Imel',pw:'Kalmar sirri',noFarm:'Ba a haɗa wannan asusu da gona ba tukuna.',farm:'Gona',setup:'Saita gonarka',fname:'Sunan gona',bag:'Nauyin buhun abinci (kg)',price:'Farashin buhu (₦)',pname:'Sunan kwano',birds:'Adadin kaji',addpen:'Ƙara kwano',close:'Rufe',create:'Ƙirƙiri gona',update:'Sabunta',pens:'Kwanuka',confirmClose:'Rufe wannan kwano? Bayanan baya za su kasance.',duties:'Ayyuka',dnew:'Sabon aiki',dname:'Aiki (misali: Ciyar da kaji)',assignee:'Wanda aka ba',dtime:'Lokaci',adddty:'Ƙara aiki',markdone:'An gama',done:'An yi',by:'daga',overdue:'Ya wuce lokaci',undo:'Soke',remove:'Cire',nodut:'Babu ayyuka tukuna.',of:'cikin',sales:'Tallace-tallace',stype:'Abu',t_eggs:'Kwai (crate)',t_hens:'Tsofaffin kaji',t_manure:'Taki',t_other:'Wani',qty:'Adadi',uprice:'Farashin ɗaya (₦)',buyer:'Mai saye (na zaɓi)',addsale:'Adana tallace',total:'Jimla',recent:'Tallace-tallace na kwanan nan',sum7:'Kwanaki 7 da suka wuce',sold:'Tallace',spent:'Kashe-kashe',net:'Riba (kimantawa)',netnote:'Kashe-kashe = abinci + albashi + magani + sufuri.',labour:'Albashin ma’aikata na wata (₦)',nolabour:' Ba a saka albashi ba (shafin Gona).',nofeed:' Ba a saka farashin abinci ba (shafin Gona).',nosales:'Babu tallace-tallace tukuna.',exptab:'Kashe-kashe',moneytab:'Kuɗi',today:'Yau'}
 };
 const SHOW_SUMMARY = false; // set to true to show the 'Last 7 days' sales/costs/net card on Results
@@ -103,26 +103,46 @@ function renderLogin(msg) {
     <form id="lf"><label>${t('email')}<input type="email" id="em" required autocomplete="username"></label>
     <label>${t('pw')}<input type="password" id="pw" required autocomplete="current-password"></label>
     <p class="err" id="er">${msg ? esc(msg) : ''}</p><button class="primary">${t('signin')}</button></form>
-    <button class="link" id="lg">${langBtn()}</button></main>`;
+    <button class="link" id="lg">${langBtn()}</button><button class="link" id="jn">${t('joinfarm')}</button></main>`;
   $('#lf').onsubmit = async e => {
     e.preventDefault();
     const { error } = await sb.auth.signInWithPassword({ email: $('#em').value.trim(), password: $('#pw').value });
     error ? $('#er').textContent = error.message : load();
   };
   $('#lg').onclick = () => { flipLang(); renderLogin(); };
+  $('#jn').onclick = () => renderJoin();
+}
+
+function renderJoin(msg) {
+  $('#app').innerHTML = `<main><h1>${t('joinfarm')}</h1><form id="jf">
+    <label>${t('email')}<input type="email" id="je" required autocomplete="username"></label>
+    <label>${t('pw')}<input type="password" id="jp" minlength="6" required autocomplete="new-password"></label>
+    <label>${t('code')}<input id="jc2" required autocapitalize="characters"></label>
+    <p class="err" id="er">${msg ? esc(msg) : ''}</p><button class="primary">${t('joinfarm')}</button></form>
+    <button class="link" id="bk">${t('signin')}</button></main>`;
+  $('#bk').onclick = () => renderLogin();
+  $('#jf').onsubmit = async e => {
+    e.preventDefault();
+    const { data, error } = await sb.auth.signUp({ email: $('#je').value.trim(), password: $('#jp').value });
+    if (error) { $('#er').textContent = error.message; return; }
+    if (!data.session) { $('#er').textContent = t('confirmfirst'); return; }
+    const r = await sb.rpc('redeem_code', { p_code: $('#jc2').value });
+    if (r.error) { $('#er').textContent = r.error.message; return; }
+    load();
+  };
 }
 
 function renderApp() {
   $('#app').innerHTML = `<header><b>${esc(farm.name)}</b><span><button class="link" id="lg">${langBtn()}</button><button class="link" id="so">${t('signout')}</button></span></header>
-    <nav><button id="tl" class="${tab === 'log' ? 'on' : ''}">${t('log')}</button><button id="td" class="${tab === 'dash' ? 'on' : ''}">${t('dash')}</button><button id="ts" class="${tab === 'sales' ? 'on' : ''}">${t('sales')}</button><button id="te" class="${tab === 'exp' ? 'on' : ''}">${t('exptab')}</button><button id="tm" class="${tab === 'money' ? 'on' : ''}">${t('moneytab')}</button>${SHOW_DUTIES ? `<button id="tu" class="${tab === 'duty' ? 'on' : ''}">${t('duties')}</button>` : ''}${role === 'owner' ? `<button id="tf" class="${tab === 'farm' ? 'on' : ''}">${t('farm')}</button>` : ''}</nav><main id="v"></main>`;
+    <nav><button id="tl" class="${tab === 'log' ? 'on' : ''}">${t('log')}</button><button id="td" class="${tab === 'dash' ? 'on' : ''}">${t('dash')}</button><button id="ts" class="${tab === 'sales' ? 'on' : ''}">${t('sales')}</button>${role === 'owner' ? `<button id="te" class="${tab === 'exp' ? 'on' : ''}">${t('exptab')}</button><button id="tm" class="${tab === 'money' ? 'on' : ''}">${t('moneytab')}</button>` : ''}${SHOW_DUTIES ? `<button id="tu" class="${tab === 'duty' ? 'on' : ''}">${t('duties')}</button>` : ''}${role === 'owner' ? `<button id="tf" class="${tab === 'farm' ? 'on' : ''}">${t('farm')}</button>` : ''}</nav><main id="v"></main>`;
   $('#lg').onclick = () => { flipLang(); renderApp(); };
   $('#so').onclick = async () => { await sb.auth.signOut(); renderLogin(); };
   $('#tl').onclick = () => { tab = 'log'; renderApp(); };
   $('#td').onclick = () => { tab = 'dash'; renderApp(); };
   if ($('#tf')) $('#tf').onclick = () => { tab = 'farm'; renderApp(); };
   $('#ts').onclick = () => { tab = 'sales'; renderApp(); };
-  $('#te').onclick = () => { tab = 'exp'; renderApp(); };
-  $('#tm').onclick = () => { tab = 'money'; renderApp(); };
+  if ($('#te')) $('#te').onclick = () => { tab = 'exp'; renderApp(); };
+  if ($('#tm')) $('#tm').onclick = () => { tab = 'money'; renderApp(); };
   if ($('#tu')) $('#tu').onclick = () => { tab = 'duty'; renderApp(); };
   tab === 'log' ? viewLog() : tab === 'dash' ? viewDash() : tab === 'sales' ? viewSales() : tab === 'exp' ? viewExpenses() : tab === 'money' ? viewMoney() : tab === 'duty' ? viewDuties() : viewFarm();
 }
@@ -204,34 +224,46 @@ async function viewDash() {
 
 async function viewSales() {
   $('#v').innerHTML = '<p>…</p>';
-  const r = await sb.from('sales').select('id, sale_date, type, quantity, unit_price, buyer, amount_received')
+  const r = await sb.from('sales').select('id, sale_date, type, quantity, unit_price, buyer, amount_received, below_price')
     .order('sale_date', { ascending: false }).order('created_at', { ascending: false }).limit(15);
   if (r.error) { $('#v').innerHTML = `<p class="err">${esc(r.error.message)}</p>`; return; }
   const list = r.data || [];
   const money = n => '₦' + Math.round(n).toLocaleString('en-NG');
+  const pr0 = await sb.from('egg_prices').select('price').lte('price_date', today()).order('price_date', { ascending: false }).limit(1);
+  const setPrice = pr0.data && pr0.data[0] ? Number(pr0.data[0].price) : 0;
+  const tomorrow = new Date(Date.now() + 864e5).toLocaleDateString('en-CA', { timeZone: 'Africa/Lagos' });
+  const priceBlock = `<p class="ok">${t('currentprice')}: ${setPrice ? money(setPrice) : '–'}</p>` + (role === 'owner' ? `<form id="pf3" style="margin-bottom:24px"><label>${t('pricefor')}<input type="date" id="pd" value="${tomorrow}" required></label><label>${t('pricecrate')}<input type="number" id="pp" inputmode="decimal" min="0" step="any" required></label><p id="pm3" role="status"></p><button class="primary">${t('setprice')}</button></form>` : '');
   const all = (await sb.from('sales').select('quantity, unit_price, amount_received')).data || [];
   const owedAll = all.reduce((a, x) => a + Number(x.quantity) * Number(x.unit_price) - Number(x.amount_received ?? Number(x.quantity) * Number(x.unit_price)), 0);
   const owedTag = x => { const o = x.quantity * x.unit_price - Number(x.amount_received ?? x.quantity * x.unit_price);
-    return o > 0.5 ? `<span class="err">${t('owed')} ${money(o)}</span>${role === 'owner' ? `<button class="link" data-paid="${x.id}">${t('markpaid')}</button>` : ''}` : ''; };
-  $('#v').innerHTML = `${owedAll > 0.5 ? `<p class="err">${t('owedtotal')}: ${money(owedAll)}</p>` : ''}<form id="sf2">
+    return role === 'owner' && o > 0.5 ? `<span class="err">${t('owed')} ${money(o)}</span>${role === 'owner' ? `<button class="link" data-paid="${x.id}">${t('markpaid')}</button>` : ''}` : ''; };
+  $('#v').innerHTML = `${role === 'owner' && owedAll > 0.5 ? `<p class="err">${t('owedtotal')}: ${money(owedAll)}</p>` : ''}${priceBlock}<form id="sf2">
     <label>${t('date')}<input type="date" id="sd" value="${today()}" required></label>
     <label>${t('stype')}<select id="st"><option value="eggs">${t('t_eggs')}</option><option value="hens">${t('t_hens')}</option><option value="manure">${t('t_manure')}</option><option value="other">${t('t_other')}</option></select></label>
     <label>${t('qty')}<input type="number" id="sq" inputmode="decimal" min="0" step="any" required></label>
-    <label>${t('uprice')}<input type="number" id="su" inputmode="decimal" min="0" step="any" required></label>
+    <label>${t('uprice')}<input type="number" id="su" inputmode="decimal" min="0" step="any" value="${setPrice || ''}" required></label>
     <label>${t('buyer')}<input id="sbuy"></label>
     <label>${t('pay')}<select id="sp2"><option value="cash">${t('p_cash')}</option><option value="transfer">${t('p_transfer')}</option><option value="other">${t('p_other')}</option></select></label>
     <label>${t('recv')}<input type="number" id="sr" inputmode="decimal" min="0" step="any"></label>
     <p id="stot" style="font-weight:700"></p><p id="smsg" role="status"></p><button class="primary">${t('addsale')}</button></form>
     <h2 style="margin-top:28px">${t('recent')}</h2>` +
-    (list.length ? list.map(x => `<div class="row"><span>${x.sale_date.slice(5)} · ${t('t_' + x.type)} ${Number(x.quantity)} × ${money(Number(x.unit_price))}${x.buyer ? ' · ' + esc(x.buyer) : ''}</span><b>${money(x.quantity * x.unit_price)}</b>${owedTag(x)}${role === 'owner' ? `<button class="link" data-del="${x.id}">✕</button>` : ''}</div>`).join('') : `<p>${t('nosales')}</p>`);
+    (list.length ? list.map(x => `<div class="row"><span>${x.sale_date.slice(5)} · ${t('t_' + x.type)} ${Number(x.quantity)} × ${money(Number(x.unit_price))}${x.buyer ? ' · ' + esc(x.buyer) : ''}</span><b>${money(x.quantity * x.unit_price)}</b>${x.below_price ? `<span class="err">${t('belowp')}</span>` : ''}${owedTag(x)}${role === 'owner' ? `<button class="link" data-del="${x.id}">✕</button>` : ''}</div>`).join('') : `<p>${t('nosales')}</p>`);
   const upd = () => { const v = +$('#sq').value * +$('#su').value; $('#stot').textContent = v ? `${t('total')}: ${money(v)}` : ''; };
   $('#sq').oninput = upd; $('#su').oninput = upd;
+  $('#st').onchange = () => { $('#su').value = $('#st').value === 'eggs' && setPrice ? setPrice : ''; upd(); };
+  if ($('#pf3')) $('#pf3').onsubmit = async e => {
+    e.preventDefault();
+    const { error } = await sb.from('egg_prices').upsert({ farm_id: farm.id, price_date: $('#pd').value, price: +$('#pp').value }, { onConflict: 'farm_id,price_date' });
+    if (error) { $('#pm3').className = 'err'; $('#pm3').textContent = error.message; return; }
+    await viewSales();
+    $('#pm3').className = 'ok'; $('#pm3').textContent = t('saved');
+  };
   $('#sf2').onsubmit = async e => {
     e.preventDefault();
     const { data: { user } } = await sb.auth.getUser();
-    if ($('#st').value === 'eggs') { const st = await eggStock(); if (+$('#sq').value > st && !confirm(`${t('stockwarn')} ${Math.round(st * 10) / 10} ${t('crates')}. ${t('saveanyway')}`)) return; }
+    if ($('#st').value === 'eggs' && role === 'owner') { const st = await eggStock(); if (+$('#sq').value > st && !confirm(`${t('stockwarn')} ${Math.round(st * 10) / 10} ${t('crates')}. ${t('saveanyway')}`)) return; }
     const { error } = await sb.from('sales').insert({ farm_id: farm.id, sale_date: $('#sd').value, type: $('#st').value,
-      quantity: +$('#sq').value, unit_price: +$('#su').value, buyer: $('#sbuy').value.trim() || null, created_by: user.email, payment_method: $('#sp2').value,
+      quantity: +$('#sq').value, unit_price: +$('#su').value, buyer: $('#sbuy').value.trim() || null, created_by: user.email, payment_method: $('#sp2').value, below_price: $('#st').value === 'eggs' && setPrice > 0 && +$('#su').value < setPrice,
       amount_received: $('#sr').value === '' ? +$('#sq').value * +$('#su').value : +$('#sr').value });
     if (error) { $('#smsg').className = 'err'; $('#smsg').textContent = error.message; return; }
     await viewSales();
@@ -290,6 +322,26 @@ async function viewExpenses() {
     const { data: r1 } = await sb.from('expenses').select('amount').eq('id', b.dataset.paid).single();
     await sb.from('expenses').update({ amount_paid: r1.amount }).eq('id', b.dataset.paid);
     viewExpenses();
+  });
+}
+
+async function viewTeam() {
+  const r = await sb.from('app_users').select('user_id, email').eq('farm_id', farm.id).eq('role', 'worker');
+  const box = document.createElement('div');
+  box.innerHTML = `<h2 style="margin-top:28px">${t('team')}</h2>` +
+    ((r.data || []).length ? r.data.map(x => `<div class="row"><span>${esc(x.email || '')}</span><button class="link" data-rmu="${x.user_id}">${t('remove')}</button></div>`).join('') : `<p>${t('noteam')}</p>`) +
+    `<p id="jc" class="ok"></p><button class="primary" id="mkc">${t('newcode')}</button>`;
+  $('#v').appendChild(box);
+  $('#mkc').onclick = async () => {
+    const code = Math.random().toString(36).slice(2, 8).toUpperCase();
+    const { error } = await sb.from('join_codes').insert({ code, farm_id: farm.id });
+    $('#jc').className = error ? 'err' : 'ok';
+    $('#jc').textContent = error ? error.message : `${t('codeis')} ${code}`;
+  };
+  box.querySelectorAll('[data-rmu]').forEach(b => b.onclick = async () => {
+    if (!confirm(t('remove') + '?')) return;
+    await sb.from('app_users').delete().eq('user_id', b.dataset.rmu);
+    viewFarm();
   });
 }
 
@@ -447,6 +499,7 @@ function viewFarm() {
     const { error } = await sb.from('flocks').update({ status: 'closed' }).eq('id', b.dataset.id);
     if (!error) { await loadPens(); viewFarm(); }
   });
+  viewTeam();
 }
 
 init();

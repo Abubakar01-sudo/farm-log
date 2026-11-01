@@ -62,7 +62,8 @@ async function init() {
 }
 
 async function load() {
-  const { data, error } = await sb.from('app_users').select('role, farms(id, name, bag_kg, feed_price_per_bag, monthly_labour, opening_cash, opening_eggs)').maybeSingle();
+  const { data: { user: me } } = await sb.auth.getUser();
+  const { data, error } = await sb.from('app_users').select('role, farms(id, name, bag_kg, feed_price_per_bag, monthly_labour, opening_cash, opening_eggs)').eq('user_id', me.id).maybeSingle();
   if (error) { renderLogin(error.message); return; }
   if (!data) { renderSetup(); return; }
   farm = data.farms; role = data.role;

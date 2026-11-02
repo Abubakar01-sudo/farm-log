@@ -33,11 +33,11 @@ section{background:#fff;border:2px solid var(--line);border-radius:8px;padding:1
 .al{background:#FBE9E7;color:var(--red);padding:8px 12px;border-radius:8px;margin:0 0 8px;font-size:16px;font-weight:600}.al.w{background:#FFF4DB;color:#7A5200}
 .bars{display:flex;align-items:flex-end;gap:3px;height:90px}.bars>div{flex:1;display:flex;align-items:flex-end;gap:1px;height:100%}.bars i{display:block;flex:1;min-height:1px}
 @media print{nav,header,button,.bar,.noprint{display:none!important}}
-.bar{position:fixed;left:0;right:0;bottom:0;display:flex;max-width:480px;margin:0 auto;background:#fff;border-top:2px solid var(--line);padding:6px 4px calc(8px + env(safe-area-inset-bottom));z-index:5}
+.bar{position:fixed;left:0;right:0;bottom:0;display:flex;max-width:480px;margin:0 auto;background:#fff;border-top:2px solid var(--line);padding:6px 4px max(36px, calc(10px + env(safe-area-inset-bottom)));z-index:5}
 .bar button{flex:1;border:0;background:none;font-size:12px;color:var(--muted);padding:2px 0}
 .bar button.on{color:var(--green);font-weight:700}
 .bar .ic{display:block;font-size:22px;line-height:1.2}
-#v{padding-bottom:96px}
+#v{padding-bottom:150px}
 .st{display:flex;gap:8px;align-items:center}.st input{margin-top:0;text-align:center}
 .stp{min-width:56px;min-height:54px;font-size:26px;border:2px solid var(--line);background:#fff;border-radius:8px;color:var(--ink)}
 table{width:100%;border-collapse:collapse;font-size:16px}
@@ -156,7 +156,16 @@ function renderApp() {
   $('#so').onclick = async () => { await sb.auth.signOut(); renderLogin(); };
   document.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => { tab = b.dataset.tab; renderApp(); });
   ({ home: viewHome, log: viewLog, dash: viewDash, sales: viewSales, exp: viewExpenses, money: () => viewMoney(), duty: viewDuties, farm: viewFarm, more: viewMore }[tab] || viewLog)();
+  placeBar();
 }
+
+// keep the bottom bar inside the visible screen (some phone browsers hide part of the page under their own toolbar)
+function placeBar() {
+  const b = document.querySelector('.bar'), v = window.visualViewport;
+  if (b && v) b.style.bottom = Math.max(0, document.documentElement.clientHeight - v.height - v.offsetTop) + 'px';
+}
+if (window.visualViewport) { visualViewport.addEventListener('resize', placeBar); visualViewport.addEventListener('scroll', placeBar); }
+window.addEventListener('scroll', placeBar);
 
 function viewMore() {
   $('#v').innerHTML = [['dash', t('dash')], ['exp', t('exptab')], ['farm', t('farm')]].map(x => `<button class="primary" style="margin-bottom:12px" data-go="${x[0]}">${x[1]}</button>`).join('');

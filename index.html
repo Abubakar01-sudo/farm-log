@@ -10,7 +10,9 @@
 <title>Farm Log</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
 <style>
-:root{--bg:#F6F8F3;--ink:#14231A;--muted:#5B6A60;--line:#D3DBCF;--yolk:#F0AE1B;--green:#1E5B3A;--red:#B3261E}
+:root{--bg:#F6F8F3;--ink:#14231A;--muted:#5B6A60;--line:#D3DBCF;--card:#fff;--yolk:#F0AE1B;--green:#1E5B3A;--red:#B3261E;--alb:#FBE9E7;--alc:#B3261E;--awb:#FFF4DB;--awc:#7A5200;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A14;--ink:#E8EFE9;--muted:#9FB0A5;--line:#2E4036;--card:#16231C;--green:#3FA56A;--red:#FF8A80;--alb:#3A1E1B;--alc:#FF8A80;--awb:#3A2F12;--awc:#F0C050;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A14;--ink:#E8EFE9;--muted:#9FB0A5;--line:#2E4036;--card:#16231C;--green:#3FA56A;--red:#FF8A80;--alb:#3A1E1B;--alc:#FF8A80;--awb:#3A2F12;--awc:#F0C050;color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 main,header,nav{max-width:480px;margin:0 auto;padding:16px}
@@ -18,35 +20,34 @@ header{display:flex;justify-content:space-between;align-items:center;padding-bot
 h1{font-size:30px;margin:24px 0 16px}
 h2{font-size:20px;margin:0 0 4px}
 label{display:block;margin:0 0 16px;color:var(--muted);font-size:16px}
-input,select{display:block;width:100%;min-height:54px;margin-top:6px;padding:8px 12px;font:inherit;font-size:22px;color:var(--ink);background:#fff;border:2px solid var(--line);border-radius:8px}
+input,select{display:block;width:100%;min-height:54px;margin-top:6px;padding:8px 12px;font:inherit;font-size:22px;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:8px}
 input:focus,select:focus,button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
 button{font:inherit;cursor:pointer}
-.primary{width:100%;min-height:56px;font-weight:700;color:var(--ink);background:var(--yolk);border:0;border-radius:8px}
+.primary{width:100%;min-height:56px;font-weight:700;color:#14231A;background:var(--yolk);border:0;border-radius:8px}
 .link{background:none;border:0;color:var(--green);padding:8px;font-size:16px;text-decoration:underline}
 nav{display:flex;flex-wrap:wrap;gap:8px}
-nav button{flex:1 1 28%;min-height:48px;font-size:15px;padding:0 4px;background:#fff;border:2px solid var(--line);border-radius:8px;font-weight:600}
+nav button{flex:1 1 28%;min-height:48px;font-size:15px;padding:0 4px;background:var(--card);border:2px solid var(--line);border-radius:8px;font-weight:600}
 nav button.on{background:var(--green);border-color:var(--green);color:#fff}
 .err{color:var(--red);font-weight:600}.ok{color:var(--green);font-weight:600}
-section{background:#fff;border:2px solid var(--line);border-radius:8px;padding:16px;margin-bottom:16px}
+section{background:var(--card);border:2px solid var(--line);border-radius:8px;padding:16px;margin-bottom:16px}
 .big{font-size:56px;font-weight:800;line-height:1.1}.big small{font-size:18px;font-weight:600;color:var(--muted);margin-left:6px}
 .bar{height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:8px 0 12px}.bar i{display:block;height:100%;background:var(--green)}
 .row{display:flex;flex-wrap:wrap;gap:4px 8px;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:4px 0}
 .g{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
-.m{background:#fff;border:2px solid var(--line);border-radius:8px;padding:10px}.m small{display:block;color:var(--muted);font-size:14px}.m b{font-size:20px}
-.al{background:#FBE9E7;color:var(--red);padding:8px 12px;border-radius:8px;margin:0 0 8px;font-size:16px;font-weight:600}.al.w{background:#FFF4DB;color:#7A5200}
+.m{background:var(--card);border:2px solid var(--line);border-radius:8px;padding:10px}.m small{display:block;color:var(--muted);font-size:14px}.m b{font-size:20px}
+.al{background:var(--alb);color:var(--alc);padding:8px 12px;border-radius:8px;margin:0 0 8px;font-size:16px;font-weight:600}.al.w{background:var(--awb);color:var(--awc)}
 .bars{display:flex;align-items:flex-end;gap:3px;height:90px}.bars>div{flex:1;display:flex;align-items:flex-end;gap:1px;height:100%}.bars i{display:block;flex:1;min-height:1px}
 @media print{nav,header,button,.tabbar,.noprint{display:none!important}}
 .shell{display:flex;flex-direction:column;height:100vh;height:100dvh;max-width:480px;margin:0 auto}
 .shell>header{flex:none;width:100%}.shell>main{flex:1;min-height:0;overflow-y:auto;width:100%}
-.tabbar{flex:none;display:flex;background:#fff;border-top:2px solid var(--line);padding:6px 4px max(10px, env(safe-area-inset-bottom))}
-.bar::after{content:'';position:absolute;left:0;right:0;top:100%;height:80px;background:#fff}
+.tabbar{flex:none;display:flex;background:var(--card);border-top:2px solid var(--line);padding:6px 4px max(10px, env(safe-area-inset-bottom))}
 .tabbar button{flex:1;border:0;background:none;font-size:12px;color:var(--muted);padding:2px 0}
 .tabbar button.on{color:var(--green);font-weight:700}
 .tabbar .ic{display:block;font-size:22px;line-height:1.2}
 #v{padding-bottom:24px}
 @media print{.shell{height:auto;display:block}.shell>main{overflow:visible}}
 .st{display:flex;gap:8px;align-items:center}.st input{margin-top:0;text-align:center}
-.stp{min-width:56px;min-height:54px;font-size:26px;border:2px solid var(--line);background:#fff;border-radius:8px;color:var(--ink)}
+.stp{min-width:56px;min-height:54px;font-size:26px;border:2px solid var(--line);background:var(--card);border-radius:8px;color:var(--ink)}
 table{width:100%;border-collapse:collapse;font-size:16px}
 th{text-align:left;color:var(--muted);font-weight:600}th,td{padding:6px 4px;border-bottom:1px solid var(--line)}
 </style>
@@ -71,6 +72,13 @@ const $ = s => document.querySelector(s);
 const t = k => T[lang][k] || T.en[k] || k;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const today = () => new Date().toLocaleDateString('en-CA', { timeZone: 'Africa/Lagos' });
+try { const th = localStorage.getItem('theme'); if (th) document.documentElement.dataset.theme = th; } catch (e) {}
+const themeIcon = () => ({ light: '☀️', dark: '🌙' }[document.documentElement.dataset.theme] || '🌓');
+function cycleTheme() {
+  const cur = document.documentElement.dataset.theme || 'auto', nx = cur === 'auto' ? 'light' : cur === 'light' ? 'dark' : 'auto';
+  if (nx === 'auto') delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = nx;
+  try { localStorage.setItem('theme', nx === 'auto' ? '' : nx); } catch (e) {}
+}
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const langBtn = () => lang === 'en' ? 'Hausa' : 'English';
 function flipLang() { lang = lang === 'en' ? 'ha' : 'en'; try { localStorage.setItem('lang', lang); } catch (e) {} }
@@ -157,9 +165,10 @@ function renderApp() {
   const items = owner ? [['home', '🏠', t('homet')], ['log', '📝', t('logs')], ['sales', '🧾', t('sales')], ['money', '💰', t('moneytab')], ['more', '☰', t('more')]]
     : [['log', '📝', t('logs')], ['dash', '📊', t('dash')], ['sales', '🧾', t('sales')]];
   const on = k => k === 'more' ? ['more', 'dash', 'exp', 'farm'].includes(tab) : tab === k;
-  $('#app').innerHTML = `<div class="shell"><header><b>${esc(farm.name)}</b><span><button class="link" id="lg">${langBtn()}</button><button class="link" id="so">${t('signout')}</button></span></header><main id="v"></main>
+  $('#app').innerHTML = `<div class="shell"><header><b>${esc(farm.name)}</b><span><button class="link" id="th">${themeIcon()}</button><button class="link" id="lg">${langBtn()}</button><button class="link" id="so">${t('signout')}</button></span></header><main id="v"></main>
     <div class="tabbar">${items.map(i => `<button data-tab="${i[0]}" class="${on(i[0]) ? 'on' : ''}"><span class="ic">${i[1]}</span>${i[2]}</button>`).join('')}</div></div>`;
   $('#lg').onclick = () => { flipLang(); renderApp(); };
+  $('#th').onclick = () => { cycleTheme(); $('#th').textContent = themeIcon(); };
   $('#so').onclick = async () => { await sb.auth.signOut(); renderLogin(); };
   document.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => { tab = b.dataset.tab; renderApp(); });
   ({ home: viewHome, log: viewLog, dash: viewDash, sales: viewSales, exp: viewExpenses, money: () => viewMoney(), duty: viewDuties, farm: viewFarm, more: viewMore }[tab] || viewLog)();

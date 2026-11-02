@@ -1,0 +1,14 @@
+{
+  "name": "Farm Log",
+  "short_name": "Farm Log",
+  "description": "Daily records, sales and money for poultry farms",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F6F8F3",
+  "theme_color": "#1E5B3A",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

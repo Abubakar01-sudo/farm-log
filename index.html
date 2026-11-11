@@ -61,9 +61,11 @@ const SUPABASE_ANON_KEY = 'sb_publishable_ulubCPXy-yxQ8C8TqgZxRA_Txf8Tpwc'; // n
 // ===================================================================
 
 const T = {
-  en:{log:'Daily log',dash:'Production',pen:'Pen',date:'Date',eggs:'Eggs collected',feed:'Feed used (kg)',expenses:'Expenses (₦)',med:'Medication',trans:'Logistics / transport',exp7:'Expenses, last 7 days',dead:'Deaths',save:'Save entry',saved:'Saved.',hd:'hen-day',drop:'Production dropped by',pts:'points',nodata:'No entries yet.',nopens:'No pens set up yet.',signin:'Sign in',signout:'Sign out',email:'Email',pw:'Password',noFarm:'This account is not linked to a farm yet.',farm:'Farm',setup:'Set up your farm',fname:'Farm name',bag:'Feed bag size (kg)',price:'Feed price per bag (₦)',pname:'Pen name',birds:'Number of birds',addpen:'Add pen',close:'Close',create:'Create farm',update:'Update',pens:'Pens',confirmClose:'Close this pen? Its past entries are kept.',duties:'Duties',dnew:'New duty',dname:'Duty (e.g. Feed pens)',assignee:'Assigned to',dtime:'Due time',adddty:'Add duty',markdone:'Mark done',done:'Done',by:'by',overdue:'Overdue',undo:'Undo',remove:'Remove',nodut:'No duties yet.',of:'of',sales:'Sales',stype:'Item',t_eggs:'Eggs (crates)',t_hens:'Spent hens',t_manure:'Manure',t_other:'Other',qty:'Quantity',uprice:'Price each (₦)',buyer:'Buyer (optional)',addsale:'Save sale',total:'Total',recent:'Recent sales',sum7:'Last 7 days',sold:'Sales',spent:'Costs',net:'Net (estimate)',netnote:'Costs = feed + labour + medication + transport.',labour:'Monthly labour cost (₦)',nolabour:' Labour is not set (Farm tab).',nofeed:' Feed price is not set (Farm tab).',nosales:'No sales yet.',exptab:'Expenses',pay:'Payment method',p_cash:'Cash',p_transfer:'Bank transfer',p_other:'Other',recv:'Amount received (₦, blank = all)',owed:'Owed',markpaid:'Mark paid',category:'Category',desc:'Description',supplier:'Supplier',paid:'Amount paid (₦, blank = all)',amount:'Amount (₦)',owing:'You owe',owedtotal:'Customers owe you',addexp:'Save expense',noexp:'No expenses yet.',cat_feed:'Feed',cat_medication:'Medication / vaccination',cat_labour:'Labour / staff',cat_transport:'Transport / logistics',cat_utilities:'Electricity / water',cat_maintenance:'Equipment maintenance',cat_packaging:'Packaging',cat_admin:'Administrative',cat_other:'Other',recentexp:'Recent expenses',bill:'Billing',billbirds:'Birds (active pens)',billrate:'Rate per bird per month',billmonth:'Amount this month',billstatus:'Status',billtrial:'Free trial until',billpaid:'Paid',billdue:'Due',billpay:'Payment history',nopay:'No payments yet.',admin:'Admin',record:'Record payment',setrate:'Set rate',birdsl:'birds',nowl:'now',editb:'Edit',savedoffline:'Saved on this phone. It will upload when you are online.',needonline:'Connect to the internet to sign in.',offlineview:'You are offline. This screen needs internet. You can still use Log and Sales.',syncfail:'An offline entry could not be uploaded and was dropped:',homet:'Home',logs:'Log',more:'More',moredet:'More details',xactive:'Active pens',xall:'All pens (including closed)',closedtag:'closed',dashtab:'Dashboard',profitm:'Profit, last 30 days',cashbal:'Cash balance',stockm:'Egg stock',cpcm:'Cost per crate',alerts:'Needs attention',noalerts:'Nothing needs attention.',chart14:'Last 14 days: sales (green) and expenses (yellow)',exportt:'Export',savepdf:'Save as PDF',a_stock:'Egg stock is negative: sales are more than the recorded stock',a_cpc:'Cost per crate is up',a_profit:'Profit per day is down compared with the 30 days before',a_sales:'Egg sales per day are down compared with the 30 days before',a_below:'sales below the set price in the last 30 days',e_sales:'Sales',e_exp:'Expenses',e_prod:'Production',e_debts:'Customer debts',e_sup:'Supplier payments',belowp:'Below set price',pricefor:'Price for date',pricecrate:'Egg price per crate (₦)',setprice:'Set price',currentprice:'Current egg price',team:'Team',noteam:'No staff added yet.',newcode:'Create join code',codeis:'Share this code with your staff member:',joinfarm:'Join a farm',code:'Join code',confirmfirst:'Check your email to confirm your account, then sign in.',today:'Today',broken:'Broken eggs (part of the total above)',eused:'Eggs used or given away',brokenbig:'Broken eggs cannot be more than eggs collected.',openeggs:'Opening egg stock (crates)',crates:'crates',stockwarn:'You are selling more than the stock of',saveanyway:'Save anyway?',stock:'Egg stock',ostock:'Opening stock',produced:'Produced',brokenl:'Broken',usedl:'Used / given away',soldl:'Sold',cstock:'Closing stock',prodcost:'Production cost',cpc:'Cost per crate',avgp:'Average selling price per crate',mcrate:'Margin per crate',tmargin:'Total margin (crates sold)',prodcrates:'Crates produced',costnote:'Production cost = feed, labour, medication, transport and other costs, but not administrative costs.',moneytab:'Money',pl:'Profit and loss',revenue:'Egg and other sales',feedused:'Feed used',labourl:'Labour',opprofit:'Operating profit',hensl:'Spent hens sold (not operating income)',incl:'Result including spent hens',cf:'Cash flow',opening:'Opening cash balance (₦)',received:'Cash received',paidout:'Cash paid',closing:'Closing balance',from:'From',to:'To',d7:'7 days',d30:'30 days',mon:'This month',owedby:'Customers owe you (this period)',oweyou:'You owe suppliers (this period)',moneynote:'Profit counts feed by what the hens ate and uses the monthly labour amount if set. Cash flow counts money actually received and paid.'},
+  en:{log:'Daily log',dash:'Production',pen:'Pen',date:'Date',eggs:'Eggs collected',feed:'Feed used (kg)',expenses:'Expenses (₦)',med:'Medication',trans:'Logistics / transport',exp7:'Expenses, last 7 days',dead:'Deaths',save:'Save entry',saved:'Saved.',hd:'hen-day',drop:'Production dropped by',pts:'points',nodata:'No entries yet.',nopens:'No pens set up yet.',signin:'Sign in',signout:'Sign out',email:'Email',pw:'Password',noFarm:'This account is not linked to a farm yet.',farm:'Farm',setup:'Set up your farm',fname:'Farm name',bag:'Feed bag size (kg)',price:'Feed price per bag (₦)',pname:'Pen name',birds:'Number of birds',addpen:'Add pen',close:'Close',create:'Create farm',update:'Update',pens:'Pens',confirmClose:'Close this pen? Its past entries are kept.',duties:'Duties',dnew:'New duty',dname:'Duty (e.g. Feed pens)',assignee:'Assigned to',dtime:'Due time',adddty:'Add duty',markdone:'Mark done',done:'Done',by:'by',overdue:'Overdue',undo:'Undo',remove:'Remove',nodut:'No duties yet.',of:'of',sales:'Sales',stype:'Item',t_eggs:'Eggs (crates)',t_hens:'Spent hens',t_manure:'Manure',t_other:'Other',qty:'Quantity',uprice:'Price each (₦)',buyer:'Buyer (optional)',addsale:'Save sale',total:'Total',recent:'Recent sales',sum7:'Last 7 days',sold:'Sales',spent:'Costs',net:'Net (estimate)',netnote:'Costs = feed + labour + medication + transport.',labour:'Monthly labour cost (₦)',nolabour:' Labour is not set (Farm tab).',nofeed:' Feed price is not set (Farm tab).',nosales:'No sales yet.',exptab:'Expenses',pay:'Payment method',p_cash:'Cash',p_transfer:'Bank transfer',p_other:'Other',recv:'Amount received (₦, blank = all)',owed:'Owed',markpaid:'Mark paid',category:'Category',desc:'Description',supplier:'Supplier',paid:'Amount paid (₦, blank = all)',amount:'Amount (₦)',owing:'You owe',owedtotal:'Customers owe you',addexp:'Save expense',noexp:'No expenses yet.',cat_feed:'Feed',cat_medication:'Medication / vaccination',cat_labour:'Labour / staff',cat_transport:'Transport / logistics',cat_utilities:'Electricity / water',cat_maintenance:'Equipment maintenance',cat_packaging:'Packaging',cat_admin:'Administrative',cat_other:'Other',recentexp:'Recent expenses',a_feed:'feed per bird',a_noeggs:'while eggs did not rise',a_water:'water per bird',a_deaths:'more deaths than usual',a_broken:'broken eggs',a_med:'Medication spending is up',todayl:'Latest',usuall:'Usual (7 days)',fpbl:'Feed per bird (g)',wpbl:'Water per bird (ml)',brokenp:'Broken eggs',water:'Water used (litres)',wcol:'Water (L)',bill:'Billing',billbirds:'Birds (active pens)',billrate:'Rate per bird per month',billmonth:'Amount this month',billstatus:'Status',billtrial:'Free trial until',billpaid:'Paid',billdue:'Due',billpay:'Payment history',nopay:'No payments yet.',admin:'Admin',record:'Record payment',setrate:'Set rate',birdsl:'birds',nowl:'now',editb:'Edit',savedoffline:'Saved on this phone. It will upload when you are online.',needonline:'Connect to the internet to sign in.',offlineview:'You are offline. This screen needs internet. You can still use Log and Sales.',syncfail:'An offline entry could not be uploaded and was dropped:',homet:'Home',logs:'Log',more:'More',moredet:'More details',xactive:'Active pens',xall:'All pens (including closed)',closedtag:'closed',dashtab:'Dashboard',profitm:'Profit, last 30 days',cashbal:'Cash balance',stockm:'Egg stock',cpcm:'Cost per crate',alerts:'Needs attention',noalerts:'Nothing needs attention.',chart14:'Last 14 days: sales (green) and expenses (yellow)',exportt:'Export',savepdf:'Save as PDF',a_stock:'Egg stock is negative: sales are more than the recorded stock',a_cpc:'Cost per crate is up',a_profit:'Profit per day is down compared with the 30 days before',a_sales:'Egg sales per day are down compared with the 30 days before',a_below:'sales below the set price in the last 30 days',e_sales:'Sales',e_exp:'Expenses',e_prod:'Production',e_debts:'Customer debts',e_sup:'Supplier payments',belowp:'Below set price',pricefor:'Price for date',pricecrate:'Egg price per crate (₦)',setprice:'Set price',currentprice:'Current egg price',team:'Team',noteam:'No staff added yet.',newcode:'Create join code',codeis:'Share this code with your staff member:',joinfarm:'Join a farm',code:'Join code',confirmfirst:'Check your email to confirm your account, then sign in.',today:'Today',broken:'Broken eggs (part of the total above)',eused:'Eggs used or given away',brokenbig:'Broken eggs cannot be more than eggs collected.',openeggs:'Opening egg stock (crates)',crates:'crates',stockwarn:'You are selling more than the stock of',saveanyway:'Save anyway?',stock:'Egg stock',ostock:'Opening stock',produced:'Produced',brokenl:'Broken',usedl:'Used / given away',soldl:'Sold',cstock:'Closing stock',prodcost:'Production cost',cpc:'Cost per crate',avgp:'Average selling price per crate',mcrate:'Margin per crate',tmargin:'Total margin (crates sold)',prodcrates:'Crates produced',costnote:'Production cost = feed, labour, medication, transport and other costs, but not administrative costs.',moneytab:'Money',pl:'Profit and loss',revenue:'Egg and other sales',feedused:'Feed used',labourl:'Labour',opprofit:'Operating profit',hensl:'Spent hens sold (not operating income)',incl:'Result including spent hens',cf:'Cash flow',opening:'Opening cash balance (₦)',received:'Cash received',paidout:'Cash paid',closing:'Closing balance',from:'From',to:'To',d7:'7 days',d30:'30 days',mon:'This month',owedby:'Customers owe you (this period)',oweyou:'You owe suppliers (this period)',moneynote:'Profit counts feed by what the hens ate and uses the monthly labour amount if set. Cash flow counts money actually received and paid.'},
   ha:{log:'Rubuta na yau',dash:'Samarwa',pen:'Kwano',date:'Kwanan wata',eggs:'Kwai da aka tara',feed:'Abincin da aka yi amfani da (kg)',expenses:'Kashe-kashe (₦)',med:'Magani',trans:'Sufuri',exp7:'Kashe-kashe, kwanaki 7',dead:'Mutuwa',save:'Adana',saved:'An adana.',hd:'hen-day',drop:'Samar kwai ta ragu da',pts:'maki',nodata:'Babu bayani tukuna.',nopens:'Babu kwano tukuna.',signin:'Shiga',signout:'Fita',email:'Imel',pw:'Kalmar sirri',noFarm:'Ba a haɗa wannan asusu da gona ba tukuna.',farm:'Gona',setup:'Saita gonarka',fname:'Sunan gona',bag:'Nauyin buhun abinci (kg)',price:'Farashin buhu (₦)',pname:'Sunan kwano',birds:'Adadin kaji',addpen:'Ƙara kwano',close:'Rufe',create:'Ƙirƙiri gona',update:'Sabunta',pens:'Kwanuka',confirmClose:'Rufe wannan kwano? Bayanan baya za su kasance.',duties:'Ayyuka',dnew:'Sabon aiki',dname:'Aiki (misali: Ciyar da kaji)',assignee:'Wanda aka ba',dtime:'Lokaci',adddty:'Ƙara aiki',markdone:'An gama',done:'An yi',by:'daga',overdue:'Ya wuce lokaci',undo:'Soke',remove:'Cire',nodut:'Babu ayyuka tukuna.',of:'cikin',sales:'Tallace-tallace',stype:'Abu',t_eggs:'Kwai (crate)',t_hens:'Tsofaffin kaji',t_manure:'Taki',t_other:'Wani',qty:'Adadi',uprice:'Farashin ɗaya (₦)',buyer:'Mai saye (na zaɓi)',addsale:'Adana tallace',total:'Jimla',recent:'Tallace-tallace na kwanan nan',sum7:'Kwanaki 7 da suka wuce',sold:'Tallace',spent:'Kashe-kashe',net:'Riba (kimantawa)',netnote:'Kashe-kashe = abinci + albashi + magani + sufuri.',labour:'Albashin ma’aikata na wata (₦)',nolabour:' Ba a saka albashi ba (shafin Gona).',nofeed:' Ba a saka farashin abinci ba (shafin Gona).',nosales:'Babu tallace-tallace tukuna.',exptab:'Kashe-kashe',moneytab:'Kuɗi',today:'Yau'}
 };
+// Alert thresholds: change these numbers to tune the alerts (0.15 = 15%)
+const THR = { feed: 0.15, water: 0.20, deaths: 2, broken: 0.05, med: 0.25 };
 const PAY_INFO = 'Pay by bank transfer and send the receipt. Account details: (add yours in index.html)';
 const SHOW_SUMMARY = false; // set to true to show the 'Last 7 days' sales/costs/net card on Results
 const SHOW_DUTIES = false; // set to true to show the staff duty checklist tab
@@ -280,6 +282,7 @@ function viewLog() {
     <label>${t('broken')}<input type="number" id="ek" inputmode="numeric" min="0"></label>
     <label>${t('eused')}<input type="number" id="eu" inputmode="numeric" min="0"></label></details>
     <label>${t('feed')}<input type="number" id="fd" inputmode="decimal" min="0" step="0.1" required></label>
+    <label>${t('water')}<input type="number" id="wl" inputmode="decimal" min="0" step="any"></label>
     <label>${t('dead')}<div class="st"><button type="button" class="stp" id="dm">−</button><input type="number" id="dd" inputmode="numeric" min="0" value="0" required><button type="button" class="stp" id="dp">+</button></div></label>
     <p id="msg" role="status"></p><button class="primary">${t('save')}</button></form>`;
   try { const lp = localStorage.getItem('lastPen'); if (lp && pens.some(p => p.id === lp)) $('#pen').value = lp; } catch (e) {}
@@ -291,13 +294,13 @@ function viewLog() {
     if ((+$('#ek').value || 0) > +$('#eg').value) { $('#msg').className = 'err'; $('#msg').textContent = t('brokenbig'); return; }
     const { error, queued } = await saveOrQueue('log', {
       flock_id: $('#pen').value, log_date: $('#dt').value,
-      eggs_good: +$('#eg').value - (+$('#ek').value || 0), eggs_cracked: +$('#ek').value || 0, eggs_used: +$('#eu').value || 0, feed_kg: +$('#fd').value,
+      eggs_good: +$('#eg').value - (+$('#ek').value || 0), eggs_cracked: +$('#ek').value || 0, eggs_used: +$('#eu').value || 0, feed_kg: +$('#fd').value, water_litres: $('#wl').value === '' ? null : +$('#wl').value,
       deaths: +$('#dd').value, entered_by: userEmail
     });
     let err = error;
     $('#msg').className = err ? 'err' : 'ok';
     $('#msg').textContent = err ? err.message : (queued ? t('savedoffline') : t('saved'));
-    if (!err) { $('#eg').value = ''; $('#fd').value = ''; $('#dd').value = 0; $('#ek').value = ''; $('#eu').value = ''; }
+    if (!err) { $('#eg').value = ''; $('#fd').value = ''; $('#dd').value = 0; $('#ek').value = ''; $('#eu').value = ''; $('#wl').value = ''; }
   };
 }
 
@@ -327,6 +330,8 @@ async function viewDash() {
   for (const p of pens) {
     const { data } = await sb.from('flock_daily').select('*').eq('flock_id', p.id)
       .order('log_date', { ascending: false }).limit(7);
+    const tr = await penTrend(p);
+    const wd = {}; ((await sb.from('daily_logs').select('log_date, water_litres').eq('flock_id', p.id).gte('log_date', from7)).data || []).forEach(x => { wd[x.log_date] = x.water_litres; });
     h += `<section><h2>${esc(p.pen_name)}</h2>`;
     if (!data || !data.length) { h += `<p>${t('nodata')}</p></section>`; continue; }
     const a = data[0], b = data[1];
@@ -334,9 +339,9 @@ async function viewDash() {
     h += `<div class="big">${a.hen_day_pct}<small>% ${t('hd')}</small></div>
       <div class="bar"><i style="width:${Math.min(100, a.hen_day_pct)}%"></i></div>`;
     if (d !== null && d <= -5) h += `<p class="err">${t('drop')} ${Math.abs(d)} ${t('pts')}</p>`;
-    h += `<table><tr><th>${t('date')}</th><th>${t('eggs')}</th><th>%</th><th>${t('dead')}</th></tr>` +
-      data.map(r => `<tr><td>${r.log_date.slice(5)}</td><td>${r.eggs_good + r.eggs_cracked}</td><td>${r.hen_day_pct}</td><td>${r.deaths}</td></tr>`).join('') +
-      `</table></section>`;
+    h += `<table><tr><th>${t('date')}</th><th>${t('eggs')}</th><th>%</th><th>${t('dead')}</th><th>${t('wcol')}</th></tr>` +
+      data.map(r => `<tr><td>${r.log_date.slice(5)}</td><td>${r.eggs_good + r.eggs_cracked}</td><td>${r.hen_day_pct}</td><td>${r.deaths}</td><td>${wd[r.log_date] ?? '–'}</td></tr>`).join('') +
+      `</table>` + usualCard(tr) + `</section>`;
   }
   $('#v').innerHTML = h || `<p>${t('nopens')}</p>`;
 }
@@ -471,6 +476,39 @@ function dl(name, rows) {
   a.download = name + '-' + today() + '.csv'; a.click();
 }
 
+const avg = (a, f) => { const v = a.map(f).filter(x => x != null && isFinite(x)); return v.length ? v.reduce((q, x) => q + x, 0) / v.length : null; };
+async function penTrend(p) {
+  const [r, w] = await Promise.all([
+    sb.from('flock_daily').select('log_date, live_birds, eggs_good, eggs_cracked, feed_kg, deaths').eq('flock_id', p.id).order('log_date', { ascending: false }).limit(8),
+    sb.from('daily_logs').select('log_date, water_litres').eq('flock_id', p.id).order('log_date', { ascending: false }).limit(8)
+  ]);
+  const wm = {}; (w.data || []).forEach(x => { wm[x.log_date] = x.water_litres; });
+  const rows = (r.data || []).map(x => { const eg = Number(x.eggs_good) + Number(x.eggs_cracked), lb = Number(x.live_birds) || 1;
+    return { ...x, eggs: eg, fpb: Number(x.feed_kg) * 1000 / lb, wpb: wm[x.log_date] == null ? null : Number(wm[x.log_date]) / lb, bpct: Number(x.eggs_cracked) / Math.max(1, eg) }; });
+  return { latest: rows[0], base: rows.slice(1) };
+}
+function penAlerts(name, tr) {
+  const out = [], L = tr.latest, B = tr.base; if (!L || B.length < 3) return out;
+  const chg = (a, b) => b ? (a - b) / b : 0;
+  const f0 = avg(B, x => x.fpb), w0 = avg(B, x => x.wpb), d0 = avg(B, x => Number(x.deaths)), e0 = avg(B, x => x.eggs);
+  const fc = chg(L.fpb, f0), eggsFlat = chg(L.eggs, e0) <= 0;
+  if (Math.abs(fc) > THR.feed) out.push([fc > 0 && eggsFlat ? 0 : 1, `${name}: ${t('a_feed')} ${fc > 0 ? '+' : ''}${Math.round(fc * 100)}%${fc > 0 && eggsFlat ? ' ' + t('a_noeggs') : ''}`]);
+  if (L.wpb != null && w0) { const wc = chg(L.wpb, w0); if (Math.abs(wc) > THR.water) out.push([1, `${name}: ${t('a_water')} ${wc > 0 ? '+' : ''}${Math.round(wc * 100)}%`]); }
+  if (Number(L.deaths) >= Math.max(THR.deaths, 2 * (d0 || 0))) out.push([0, `${name}: ${t('a_deaths')} (${L.deaths})`]);
+  if (L.bpct > THR.broken) out.push([1, `${name}: ${t('a_broken')} ${Math.round(L.bpct * 100)}%`]);
+  return out;
+}
+function usualCard(tr) {
+  const L = tr.latest, B = tr.base; if (!L) return '';
+  const r1 = n => n == null || !isFinite(n) ? null : Math.round(n * 10) / 10, u = f => r1(avg(B, f));
+  const row = (l, a, b) => `<tr><td>${l}</td><td>${a ?? '–'}</td><td>${b ?? '–'}</td></tr>`;
+  const ub = u(x => x.bpct * 100);
+  return `<table style="margin-top:12px"><tr><th></th><th>${t('todayl')} (${L.log_date.slice(5)})</th><th>${t('usuall')}</th></tr>` +
+    row(t('eggs'), L.eggs, u(x => x.eggs)) + row(t('fpbl'), r1(L.fpb), u(x => x.fpb)) +
+    (L.wpb != null ? row(t('wpbl'), r1(L.wpb * 1000), u(x => x.wpb == null ? null : x.wpb * 1000)) : '') +
+    row(t('dead'), L.deaths, u(x => Number(x.deaths))) + row(t('brokenp'), r1(L.bpct * 100) + '%', ub == null ? null : ub + '%') + `</table>`;
+}
+
 async function viewHome() {
   $('#v').innerHTML = '<p>…</p>';
   const iso = d => d.toLocaleDateString('en-CA', { timeZone: 'Africa/Lagos' });
@@ -479,7 +517,7 @@ async function viewHome() {
   const t0 = today(), mF = iso(new Date(Date.now() - 29 * 864e5));
   const pF = iso(new Date(Date.now() - 59 * 864e5)), pT = iso(new Date(Date.now() - 30 * 864e5));
   const from14 = iso(new Date(Date.now() - 13 * 864e5));
-  const [cur, prev, sA, eA, s14, e14, fd, bp, fl] = await Promise.all([
+  const [cur, prev, sA, eA, s14, e14, fd, bp, fl, mc, mp] = await Promise.all([
     viewMoney(mF, t0, true), viewMoney(pF, pT, true),
     sb.from('sales').select('quantity, unit_price, amount_received'),
     sb.from('expenses').select('amount, amount_paid'),
@@ -487,7 +525,9 @@ async function viewHome() {
     sb.from('expenses').select('expense_date, amount').gte('expense_date', from14),
     sb.from('flock_daily').select('pen_name, log_date, hen_day_pct').order('log_date', { ascending: false }).limit(60),
     sb.from('sales').select('id', { count: 'exact', head: true }).eq('below_price', true).gte('sale_date', mF),
-    sb.from('flocks').select('id, pen_name, status').order('pen_name')
+    sb.from('flocks').select('id, pen_name, status').order('pen_name'),
+    sb.from('expenses').select('amount').eq('category', 'medication').gte('expense_date', mF),
+    sb.from('expenses').select('amount').eq('category', 'medication').gte('expense_date', pF).lte('expense_date', pT)
   ]);
   const oC = sum(sA.data, x => val(x) - N(x.amount_received ?? val(x))), oS = sum(eA.data, x => N(x.amount) - N(x.amount_paid));
   const dC = 30, dP = 30, al = [];
@@ -496,6 +536,10 @@ async function viewHome() {
   const byPen = {};
   (fd.data || []).forEach(x => (byPen[x.pen_name] = byPen[x.pen_name] || []).push(x));
   Object.keys(byPen).forEach(k => { const [a, b] = byPen[k]; if (b && a.hen_day_pct - b.hen_day_pct <= -5) al.push([0, `${k}: ${t('drop')} ${Math.abs(Math.round((a.hen_day_pct - b.hen_day_pct) * 10) / 10)} ${t('pts')}`]); });
+  const trs = await Promise.all(pens.map(penTrend));
+  pens.forEach((p, i) => penAlerts(p.pen_name, trs[i]).forEach(a => al.push(a)));
+  const mcS = sum(mc.data, x => N(x.amount)), mpS = sum(mp.data, x => N(x.amount));
+  if (mpS > 0 && mcS > mpS * (1 + THR.med)) al.push([1, `${t('a_med')} +${Math.round((mcS / mpS - 1) * 100)}%`]);
   if (cur.closeCr < 0) al.push([0, t('a_stock')]);
   if (prev.cpc > 0 && cur.cpc > prev.cpc * 1.1) al.push([1, `${t('a_cpc')} ${Math.round((cur.cpc / prev.cpc - 1) * 100)}%`]);
   if (prev.profit > 0 && cur.profit / dC < prev.profit / dP * 0.8) al.push([1, t('a_profit')]);
@@ -517,11 +561,16 @@ async function viewHome() {
   const fx = {
     sales: async () => (await rng(sb.from('sales').select('*').eq('farm_id', farm.id).order('sale_date'), 'sale_date')).data.map(x => [x.sale_date, x.type, x.quantity, x.unit_price, val(x), x.buyer, x.payment_method, x.amount_received, val(x) - N(x.amount_received ?? val(x)), x.below_price ? 'yes' : '']),
     exp: async () => (await rng(sb.from('expenses').select('*').eq('farm_id', farm.id).order('expense_date'), 'expense_date')).data.map(x => [x.expense_date, x.category, x.description, x.supplier, x.amount, x.amount_paid, N(x.amount) - N(x.amount_paid)]),
-    prod: async () => (await rng(sb.from('flock_daily').select('*').eq('farm_id', farm.id).in('flock_id', penIds()).order('log_date'), 'log_date')).data.map(x => [x.log_date, x.pen_name, x.eggs_good, x.eggs_cracked, x.feed_kg, x.deaths, x.live_birds, x.hen_day_pct]),
+    prod: async () => {
+      const a = (await rng(sb.from('flock_daily').select('*').eq('farm_id', farm.id).in('flock_id', penIds()).order('log_date'), 'log_date')).data;
+      const w = (await rng(sb.from('daily_logs').select('flock_id, log_date, water_litres').in('flock_id', penIds()), 'log_date')).data || [], m = {};
+      w.forEach(x => { m[x.flock_id + x.log_date] = x.water_litres; });
+      return a.map(x => [x.log_date, x.pen_name, x.eggs_good, x.eggs_cracked, x.feed_kg, x.deaths, x.live_birds, x.hen_day_pct, m[x.flock_id + x.log_date] ?? '']);
+    },
     debts: async () => (await rng(sb.from('sales').select('*').eq('farm_id', farm.id).order('sale_date'), 'sale_date')).data.filter(x => val(x) - N(x.amount_received ?? val(x)) > 0.5).map(x => [x.sale_date, x.buyer, val(x), x.amount_received, val(x) - N(x.amount_received)]),
     sup: async () => (await rng(sb.from('expenses').select('*').eq('farm_id', farm.id).order('expense_date'), 'expense_date')).data.filter(x => N(x.amount) - N(x.amount_paid) > 0.5).map(x => [x.expense_date, x.supplier, x.category, x.amount, x.amount_paid, N(x.amount) - N(x.amount_paid)])
   };
-  const hd = { sales: ['Date', 'Item', 'Quantity', 'Price each', 'Total', 'Buyer', 'Payment', 'Received', 'Owed', 'Below set price'], exp: ['Date', 'Category', 'Description', 'Supplier', 'Amount', 'Paid', 'Owed'], prod: ['Date', 'Pen', 'Eggs good', 'Eggs broken', 'Feed kg', 'Deaths', 'Live birds', 'Hen-day %'], debts: ['Date', 'Buyer', 'Total', 'Received', 'Owed'], sup: ['Date', 'Supplier', 'Category', 'Amount', 'Paid', 'Owed'] };
+  const hd = { sales: ['Date', 'Item', 'Quantity', 'Price each', 'Total', 'Buyer', 'Payment', 'Received', 'Owed', 'Below set price'], exp: ['Date', 'Category', 'Description', 'Supplier', 'Amount', 'Paid', 'Owed'], prod: ['Date', 'Pen', 'Eggs good', 'Eggs broken', 'Feed kg', 'Deaths', 'Live birds', 'Hen-day %', 'Water (L)'], debts: ['Date', 'Buyer', 'Total', 'Received', 'Owed'], sup: ['Date', 'Supplier', 'Category', 'Amount', 'Paid', 'Owed'] };
   document.querySelectorAll('[data-ex]').forEach(b => b.onclick = async () => { const k = b.dataset.ex; dl(k, [hd[k]].concat(await fx[k]())); });
 }
 

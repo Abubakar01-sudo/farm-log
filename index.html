@@ -66,6 +66,8 @@ const T = {
 };
 // Alert thresholds: change these numbers to tune the alerts (0.15 = 15%)
 const THR = { feed: 0.15, water: 0.20, deaths: 2, broken: 0.05, med: 0.25 };
+// Name of the Supabase Edge Function that resets passwords (must match the name in Supabase > Edge Functions)
+const RESET_FN = 'rapid-function';
 const PAY_INFO = 'Pay by bank transfer to OPay, ABUBAKAR MAGAJI, 8104153174. Use your farm name as the reference, then send the receipt.';
 const SHOW_SUMMARY = false; // set to true to show the 'Last 7 days' sales/costs/net card on Results
 const SHOW_DUTIES = false; // set to true to show the staff duty checklist tab
@@ -202,7 +204,7 @@ function renderChangePw(forced) {
 }
 
 async function resetPw(email) {
-  const x = await sb.functions.invoke('reset-password', { body: { email } });
+  const x = await sb.functions.invoke(RESET_FN, { body: { email } });
   if (x.error) { let m = x.error.message; try { const j = await x.error.context.json(); if (j.error) m = j.error; } catch (e) {} alert(m); return; }
   prompt(`${t('tempinfo')} ${email}`, x.data.password);
 }

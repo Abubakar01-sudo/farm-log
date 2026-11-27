@@ -422,6 +422,9 @@ async function viewAFarms() {
     const x = await sb.rpc('admin_set_billing', { p_farm: b.dataset.ext, p_rate: null, p_min: null, p_trial: base.toISOString().slice(0, 10) });
     if (x.error) alert(x.error.message); viewAFarms();
   });
+  $('#rpb').onclick = () => openReset('');
+  $('#nfb').onclick = () => openCreate();
+  document.querySelectorAll('[data-rp]').forEach(b => b.onclick = () => openReset(b.dataset.rp));
 }
 
 async function viewACosts() {
@@ -447,9 +450,6 @@ async function viewACosts() {
     const x = await sb.rpc('admin_delete_expense', { p_id: b.dataset.dc });
     if (x.error) alert(x.error.message); viewACosts();
   });
-  $('#rpb').onclick = () => openReset('');
-  $('#nfb').onclick = () => openCreate();
-  document.querySelectorAll('[data-rp]').forEach(b => b.onclick = () => openReset(b.dataset.rp));
 }
 
 async function viewAPay() {
